@@ -8,6 +8,12 @@ import { FaSearch, FaRegBell } from "react-icons/fa";
 
 import "./page.css";
 
+const images = [
+  { src: "/Home_Food_1.svg", alt: "Home Food 1" },
+  { src: "/Home_Food_2.svg", alt: "Home Food 2" },
+  { src: "/Home_Food_3.svg", alt: "Home Food 3" },
+];
+
 const dropdownSuggestions = [
   {
     id: 1,
@@ -31,6 +37,21 @@ export default function Home() {
 
   const searchRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [next, setNext] = useState(null);
+
+  const handleCircleClick = (idx) => {
+    if (idx === current || animating) return;
+    setNext(idx);
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrent(idx);
+      setAnimating(false);
+      setNext(null);
+    }, 700);
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -56,18 +77,50 @@ export default function Home() {
   return (
     <div className="page-container">
       <div className="header-container">
-        <Image
-          src="/Home_Food_1.svg"
-          alt="Home Food"
-          fill
-          className="header-image"
-          priority
-          style={{ objectFit: "cover" }}
-        />
+        <div className="header-image-slider-container">
+          {/* Current image */}
+          <Image
+            className={
+              "header-image-slide prev" +
+              (animating && next !== null ? " slide-out" : " slide-in")
+            }
+            src={images[current].src}
+            alt={images[current].alt}
+            style={{ zIndex: 1 }}
+            width={100} 
+            height={100}
+          />
+          {/* Next image (only during animation) */}
+          {animating && next !== null && (
+            <Image
+              className="header-image-slide next slide-in"
+              src={images[next].src}
+              alt={images[next].alt}
+              style={{ zIndex: 2 }}
+              width={100} 
+              height={100}
+            />
+          )}
+
+          {/* Circle buttons */}
+          <div className="header-image-circles">
+            {images.map((img, idx) => (
+              <button
+                key={idx}
+                className={
+                  "header-image-circle-btn" + (current === idx ? " active" : "")
+                }
+                onClick={() => handleCircleClick(idx)}
+                aria-label={`Show ${img.alt}`}
+                type="button"
+              />
+            ))}
+          </div>
+        </div>
         <div className="header-top-shade"></div>
         <div className="header-overlay">
           <span className="header-title">BiteSnap</span>
-          
+
           <div className="header-search-container">
             {/* Restaurant name searchbar */}
             <div style={{ position: "relative", flex: 1 }}>
