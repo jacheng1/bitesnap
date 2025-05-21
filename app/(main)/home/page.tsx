@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 
 import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt } from "react-icons/fa";
@@ -10,9 +11,9 @@ import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOu
 import "./page.css";
 
 const images = [
-  { src: "/Home_Food_1.svg", alt: "Home Food 1" },
-  { src: "/Home_Food_2.svg", alt: "Home Food 2" },
-  { src: "/Home_Food_3.svg", alt: "Home Food 3" },
+  { src: "/Home_Picture_1.svg", alt: "Home Food 1", caption: "Urban Plates", location: "Irvine, CA", link: "https://urbanplates.com/" },
+  { src: "/Home_Picture_2.svg", alt: "Home Food 2", caption: "SUP Noodle Bar", location: "Buena Park, CA", link: "https://www.supnoodlebar.com/" },
+  { src: "/Home_Picture_3.svg", alt: "Home Food 3", caption: "Menya Hanabi - The Original Nagoya Mazesoba", location: "Los Angeles, CA", link: "https://menyahanabiusa.com/" },
 ];
 
 const dropdownSuggestions = [
@@ -157,6 +158,22 @@ export default function Home() {
               height={100}
             />
           )}
+
+          {/* Caption overlay */}
+          <div className="header-image-caption">
+            {images[animating && next !== null ? next : current].caption}
+            <div className="header-image-location">
+              {images[animating && next !== null ? next : current].location}
+            </div>
+            <Link
+              href={images[animating && next !== null ? next : current].link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-order-btn"
+            >
+              Order Now
+            </Link>
+          </div>
 
           {/* Circle buttons */}
           <div className="header-image-circles">
