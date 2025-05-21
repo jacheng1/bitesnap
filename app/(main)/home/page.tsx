@@ -297,29 +297,90 @@ export default function Home() {
       </div>
       <div className="for-you-container">
         <span className="for-you-title">Your Next Food Adventure Awaits</span>
-        <div className="for-you-food-card">
-          <Image
-            src="/Food_Card_Picture_1.svg"
-            alt="NEP CAFE - Irvine Beef Tongue Fried Rice"
-            width={340}
-            height={200}
-            className="for-you-food-img"
-            style={{ objectFit: "cover", borderRadius: "16px" }}
-          />
-          <div className="for-you-food-caption">
-            <div className="for-you-food-restaurant">NEP CAFE - Irvine</div>
-            <div className="for-you-food-dish">Beef Tongue Fried Rice</div>
-            <div className="for-you-food-rating">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaRegStar />
-              <span className="for-you-food-rating-actions">
-                <MdChatBubbleOutline className="for-you-food-comment" />
-                <FaRegThumbsUp className="for-you-food-thumb" />
-                <FaRegThumbsDown className="for-you-food-thumb" />
-              </span>
+        <div className="for-you-food-cards-row">
+          {/* Tall food card */}
+          <div className="for-you-food-card">
+            <Image
+              src="/Food_Card_Picture_1.svg"
+              alt="NEP CAFE - Irvine Beef Tongue Fried Rice"
+              width={340}
+              height={200}
+              className="for-you-food-img"
+              style={{ objectFit: "cover", borderRadius: "16px" }}
+            />
+            <div className="for-you-food-caption">
+              <div className="for-you-food-restaurant">NEP CAFE - Irvine</div>
+              <div className="for-you-food-dish">Beef Tongue Fried Rice</div>
+              <div className="for-you-food-rating">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaRegStar />
+                <span className="for-you-food-rating-actions">
+                  <MdChatBubbleOutline className="for-you-food-comment" />
+                  <FaRegThumbsUp className="for-you-food-thumb" />
+                  <FaRegThumbsDown className="for-you-food-thumb" />
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="for-you-food-card-column">
+            {/* Secondary food card */}
+            <div className="for-you-food-card for-you-food-card-short">
+              <Image
+                src="/Food_Card_Picture_2.svg"
+                alt="Yup Dduk - Yup O"
+                width={340}
+                height={100}
+                className="for-you-food-img"
+                style={{ objectFit: "cover", borderRadius: "16px" }}
+              />
+              <div className="for-you-food-caption">
+                <div className="for-you-food-restaurant">Yup Dduk Irvine</div>
+                <div className="for-you-food-dish">Yup O</div>
+                <div className="for-you-food-rating">
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaRegStar />
+                  <span className="for-you-food-rating-actions">
+                    <MdChatBubbleOutline className="for-you-food-comment" />
+                    <FaRegThumbsUp className="for-you-food-thumb" />
+                    <FaRegThumbsDown className="for-you-food-thumb" />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tertiary food card */}
+            <div className="for-you-food-card for-you-food-card-short">
+              <Image
+                src="/Food_Card_Picture_3.svg"
+                alt="Ever After Tea Room & Eatery"
+                width={340}
+                height={100}
+                className="for-you-food-img"
+                style={{ objectFit: "cover", borderRadius: "16px" }}
+              />
+              <div className="for-you-food-caption">
+                <div className="for-you-food-restaurant">Ever After Tea Room & Eatery</div>
+                <div className="for-you-food-dish">Asian Truffle Fried Rice</div>
+                <div className="for-you-food-rating">
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaRegStar />
+                  <span className="for-you-food-rating-actions">
+                    <MdChatBubbleOutline className="for-you-food-comment" />
+                    <FaRegThumbsUp className="for-you-food-thumb" />
+                    <FaRegThumbsDown className="for-you-food-thumb" />
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

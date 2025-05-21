@@ -379,10 +379,25 @@
 .for-you-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 2.5rem;
+    padding-bottom: 2.5rem;
     width: 100%;
     position: relative;
+}
+
+.for-you-food-cards-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.for-you-food-card-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .for-you-title {
@@ -403,7 +418,6 @@
     width: 450px;
     height: 600px;
     margin-top: 2rem;
-    margin-bottom: 2rem;
     border-radius: 25px;
     background: #222831;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -414,10 +428,16 @@
     transform: scale(1.03);
 }
 
+.for-you-food-card-short {
+    height: 284px;
+    margin-top: 2rem;
+    align-self: flex-start;
+}
+
 .for-you-food-img {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
 }
 
 .for-you-food-caption {
