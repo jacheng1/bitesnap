@@ -1,17 +1,17 @@
 /*
 Color Palette:
 
-Dark Blue: #364F6B
-Light Blue: #3FC1C9
-White: #F5F5F5
-Pink: #FC5185
+Dark Gray: #222831
+Gray: #393E46
+Blue: #00ADB5
+White: #EEEEEE
 */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 html, body {
@@ -61,7 +61,7 @@ html, body {
 }
 
 /* Title */
-.title {
+.login-title {
   font-size: 2rem;
   font-weight: bold;
   color: #FC5185;

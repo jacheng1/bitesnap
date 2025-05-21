@@ -37,7 +37,7 @@ export default function RegisterPage() {
         />
       </div>
       <div className="register-right">
-        <h1 className="title">BiteSnap</h1>
+        <h1 className="register-title">BiteSnap</h1>
         <div className="welcome">Create a new account</div>
         <div className="sub-text">Create your account to continue</div>
 

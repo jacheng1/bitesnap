@@ -38,7 +38,7 @@ export default function LoginPage() {
         />
       </div>
       <div className="login-right">
-        <h1 className="title">BiteSnap</h1>
+        <h1 className="login-title">BiteSnap</h1>
         <h2 className="welcome">Welcome back!</h2>
         <p className="sub-text">Log in to your account to continue</p>
 

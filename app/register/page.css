@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 html, body {
@@ -56,10 +56,10 @@ p, span {
 }
 
 /* Title */
-.title {
+.register-title {
     font-size: 2rem;
     font-weight: bold;
-    color: #FC5185;
+    color: #00ADB5;
     margin-bottom: 1rem;
 }
 
@@ -125,7 +125,7 @@ p, span {
 .register {
     width: auto;  
     padding: 0.8rem 8rem;  
-    background: #FC5185;  
+    background: #00ADB5;  
     color: #FFFFFF;  
     font-size: 1.2rem;
     font-weight: bold;
@@ -136,7 +136,7 @@ p, span {
 }
 
 .register:hover {
-    background: #f76591; 
+    background: #00c0ca; 
 }
 
 /* Log in */
