@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt } from "react-icons/fa";
+import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt, FaStar, FaRegStar, FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import { MdChatBubbleOutline } from "react-icons/md";
 
 import "./page.css";
 
@@ -295,7 +296,33 @@ export default function Home() {
         </div>
       </div>
       <div className="for-you-container">
-        <span className="for-you-title">For You</span>
+        <span className="for-you-title">Your Next Food Adventure Awaits</span>
+        <div className="for-you-food-card">
+          <Image
+            src="/Food_Card_Picture_1.svg"
+            alt="NEP CAFE - Irvine Beef Tongue Fried Rice"
+            width={340}
+            height={200}
+            className="for-you-food-img"
+            style={{ objectFit: "cover", borderRadius: "16px" }}
+          />
+          <div className="for-you-food-caption">
+            <div className="for-you-food-restaurant">NEP CAFE - Irvine</div>
+            <div className="for-you-food-dish">Beef Tongue Fried Rice</div>
+            <div className="for-you-food-rating">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaRegStar />
+              <span className="for-you-food-rating-actions">
+                <MdChatBubbleOutline className="for-you-food-comment" />
+                <FaRegThumbsUp className="for-you-food-thumb" />
+                <FaRegThumbsDown className="for-you-food-thumb" />
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

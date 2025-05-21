@@ -378,12 +378,11 @@
 
 .for-you-container {
     display: flex;
-    position: relative;
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
     width: 100%;
-    height: auto;
-    overflow: hidden;
+    position: relative;
 }
 
 .for-you-title {
@@ -395,5 +394,78 @@
     font-weight: bold;
     text-align: center;
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.for-you-food-card {
+    position: relative;
+    width: 450px;
+    height: 600px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 25px;
+    background: #222831;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.for-you-food-card:hover {
+    transform: scale(1.03);
+}
+
+.for-you-food-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.for-you-food-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.1rem 1.3rem 1.1rem 1.3rem;
+    background: none;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.for-you-food-restaurant {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.for-you-food-dish {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+}
+
+.for-you-food-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #FFFFFF;
+}
+
+.for-you-food-rating-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    margin-left: 12rem;
+}
+
+.for-you-food-comment,
+.for-you-food-thumb {
+    font-size: 1.3rem;
+    transition: color 0.15s;
+    cursor: pointer;
+}
+
+.for-you-food-thumb:hover {
+    color: #FFFFFF;
 }
