@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt } from "react-icons/fa";
@@ -40,6 +41,8 @@ export default function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
+  const router = useRouter();
+
   const searchRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profileBtnRef = useRef<HTMLButtonElement>(null);
@@ -69,6 +72,18 @@ export default function Home() {
       setAnimating(false);
     }, 700);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!animating) {
+        const nextIdx = (current + 1) % images.length;
+
+        handleCircleClick(nextIdx);
+      }
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [current, animating]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -251,7 +266,10 @@ export default function Home() {
                 Messages
               </button>
               <div className="profile-dropdown-divider" />
-              <button className="profile-dropdown-btn">
+              <button 
+                className="profile-dropdown-btn"
+                onClick={() => router.push("/")}
+              >
                 <FaSignOutAlt className="profile-dropdown-icon" />
                 Log Out
               </button>
