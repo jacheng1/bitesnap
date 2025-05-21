@@ -226,9 +226,14 @@
 }
 
 .header-search-restaurant {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #222831;
-    font-weight: 500;
+}
+
+.header-search-location {
+    display: block;
+    font-size: 0.7rem;
+    color: #222831;
 }
 
 .header-search-divider {

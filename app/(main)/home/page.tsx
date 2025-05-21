@@ -20,18 +20,21 @@ const images = [
 const dropdownSuggestions = [
   {
     id: 1,
-    img: "/food1.jpg",
-    name: "Sushi Place"
+    img: "/Food_Card_Picture_1.svg",
+    name: "NEP Cafe - Irvine",
+    location: "14346 Culver Dr, Irvine, CA",
   },
   {
     id: 2,
-    img: "/food2.jpg",
-    name: "Burger Joint"
+    img: "/Food_Card_Picture_2.svg",
+    name: "Yup Dduk Irvine",
+    location: "4515a Campus Dr, Irvine, CA",
   },
   {
     id: 3,
-    img: "/food3.jpg",
-    name: "Pasta House"
+    img: "/Food_Card_Picture_3.svg",
+    name: "Ever After Team Room & Eatery",
+    location: "18090 Culver Dr, Irvine, CA",
   }
 ];
 
@@ -217,7 +220,12 @@ export default function Home() {
                         height={10}
                         width={10}
                       />
-                      <span className="header-search-restaurant">{item.name}</span>
+                      <div className="header-search-info">
+                        <span className="header-search-restaurant">{item.name}</span>
+                        <span className="header-search-location">
+                          {item.location}
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
