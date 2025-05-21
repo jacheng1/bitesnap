@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
 
-import { FaSearch, FaRegBell } from "react-icons/fa";
+import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt } from "react-icons/fa";
 
 import "./page.css";
 
@@ -33,23 +33,40 @@ const dropdownSuggestions = [
 ];
 
 export default function Home() {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [slideIn, setSlideIn] = useState(false);
+  const [next, setNext] = useState<number | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   const searchRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const profileBtnRef = useRef<HTMLButtonElement>(null);
+  const profileDropdownRef = useRef<HTMLDivElement>(null);
 
-  const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [next, setNext] = useState(null);
+  interface HandleCircleClick {
+    (idx: number): void;
+  }
 
-  const handleCircleClick = (idx) => {
-    if (idx === current || animating) return;
+  const handleCircleClick: HandleCircleClick = (idx) => {
+    if (idx === current || animating) {
+      return;
+    }
+
     setNext(idx);
     setAnimating(true);
+    setSlideIn(false);
+
+    setTimeout(() => {
+      setSlideIn(true);
+    }, 20);
+
     setTimeout(() => {
       setCurrent(idx);
-      setAnimating(false);
       setNext(null);
+      setSlideIn(false);
+      setAnimating(false);
     }, 700);
   };
 
@@ -74,6 +91,27 @@ export default function Home() {
     };
   }, [dropdownOpen]);
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        profileBtnRef.current &&
+        !profileBtnRef.current.contains(event.target as Node) &&
+        profileDropdownRef.current &&
+        !profileDropdownRef.current.contains(event.target as Node)
+      ) {
+        setProfileDropdownOpen(false);
+      }
+    }
+    if (profileDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profileDropdownOpen]);
+
   return (
     <div className="page-container">
       <div className="header-container">
@@ -82,7 +120,7 @@ export default function Home() {
           <Image
             className={
               "header-image-slide prev" +
-              (animating && next !== null ? " slide-out" : " slide-in")
+              (animating && next !== null ? " slide-out" : "")
             }
             src={images[current].src}
             alt={images[current].alt}
@@ -93,7 +131,10 @@ export default function Home() {
           {/* Next image (only during animation) */}
           {animating && next !== null && (
             <Image
-              className="header-image-slide next slide-in"
+              key={next}
+              className={
+                "header-image-slide next" + (slideIn ? " slide-in" : "")
+              }
               src={images[next].src}
               alt={images[next].alt}
               style={{ zIndex: 2 }}
@@ -181,10 +222,45 @@ export default function Home() {
           </button>
 
           {/* Profile button */}
-          <button className="profile-btn">
+          <button 
+            className="profile-btn"
+            ref={profileBtnRef}
+            onClick={() => setProfileDropdownOpen((open) => !open)}
+            aria-label="Profile"
+            type="button"
+          >
             <Image src="Profile_Picture.svg" alt="Profile" height={50} width={50} />
           </button>
+          {profileDropdownOpen && (
+            <div className="profile-dropdown" ref={profileDropdownRef}>
+              <button className="profile-dropdown-btn">
+                <FaUser className="profile-dropdown-icon" />
+                My Profile
+              </button>
+              <button className="profile-dropdown-btn">
+                <FaUserFriends className="profile-dropdown-icon" />
+                Friends
+              </button>
+              <button className="profile-dropdown-btn">
+                <FaCog className="profile-dropdown-icon" />
+                Settings
+              </button>
+              <div className="profile-dropdown-divider" />
+              <button className="profile-dropdown-btn">
+                <FaEnvelope className="profile-dropdown-icon" />
+                Messages
+              </button>
+              <div className="profile-dropdown-divider" />
+              <button className="profile-dropdown-btn">
+                <FaSignOutAlt className="profile-dropdown-icon" />
+                Log Out
+              </button>
+            </div>
+          )}
         </div>
+      </div>
+      <div className="for-you-container">
+        <span className="for-you-title">For You</span>
       </div>
     </div>
   );
