@@ -7,9 +7,8 @@ import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";

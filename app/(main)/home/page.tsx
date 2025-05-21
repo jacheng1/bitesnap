@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
 
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaRegBell } from "react-icons/fa";
 
 import "./page.css";
 
@@ -67,7 +67,9 @@ export default function Home() {
         <div className="header-top-shade"></div>
         <div className="header-overlay">
           <span className="header-title">BiteSnap</span>
+          
           <div className="header-search-container">
+            {/* Restaurant name searchbar */}
             <div style={{ position: "relative", flex: 1 }}>
               <input
                 type="text"
@@ -94,16 +96,41 @@ export default function Home() {
                 </div>
               )}
             </div>
+
+            {/* Searchbar divider */}
             <div className="header-search-divider"></div>
+
+            {/* Location searchbar */}
             <input
               type="text"
               className="header-location-search"
               placeholder="City, State"
             />
+
+            {/* Search icon */}
             <span className="header-search-icon">
               <FaSearch />
             </span>
           </div>
+          {/* Find a Restaurant button */}
+          <button className="header-action-btn find-restaurant-btn">
+            Find a Restaurant
+          </button>
+
+          {/* Write a Review button */}
+          <button className="header-action-btn write-review-btn">
+            Write a Review
+          </button>
+
+          {/* Notifications button */}
+          <button className="header-action-btn bell-btn" aria-label="Notifications">
+            <FaRegBell size={25} />
+          </button>
+
+          {/* Profile button */}
+          <button className="profile-btn">
+            <Image src="Profile_Picture.svg" alt="Profile" height={50} width={50} />
+          </button>
         </div>
       </div>
     </div>
