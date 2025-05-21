@@ -1,0 +1,266 @@
+/*
+Color Palette:
+
+Dark Blue: #364F6B
+Light Blue: #3FC1C9
+White: #F5F5F5
+Pink: #FC5185
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+/* Left container (color section) */
+.login-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  flex: 1;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-picture {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Right container (sign-in section) */
+.login-right {
+  flex: 1;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+/* Title */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FC5185;
+  margin-bottom: 1rem;
+}
+
+/* Welcome back text */
+.welcome {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Sub text */
+.sub-text {
+  font-size: 1rem;
+  color: gray;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Email input field */
+.email-slot {
+  width: 80%;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background: #F5F5F5;
+  text-align: left;
+  color: black;
+}
+
+.email-slot:focus {
+  border: 1px solid gray;
+  outline: none;
+}
+
+.password-container {
+  width: 80%;
+  position: relative;
+}
+
+/* Password input field */
+.password-slot {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background: #F5F5F5;
+  text-align: left;
+  color: black;
+}
+
+.password-slot:focus {
+  border: 1px solid gray;
+  outline: none;
+}
+
+/* Password visibility section */
+.password-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  color: gray;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.password-visible {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  color: gray;
+  font-size: 0.9rem;
+  width: 80%;
+  cursor: pointer;
+}
+
+/* Remember me & forgot password */
+.remember-forgot-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+  margin-top: 50px;
+  font-size: 0.9rem;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.forgot {
+  color: #33B7F7;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* Login button */
+.login {
+  width: 80%;  
+  text-align: center;
+  padding: 1.2rem;  
+  background: #FC5185;  
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.login:hover {
+  background: #f76591;
+}
+
+/* Login link */
+.login-link {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* Sign up */
+.sign-up {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.sign-up a {
+  color: #33B7F7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sign-up a:hover {
+  text-decoration: underline;
+}
+
+/* Separator */
+.separator {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: gray;
+  margin: 1rem 0;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: gray;
+  margin: 0 1rem;
+}
+
+/* Google sign-in button */
+.google,
+.facebook {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+
+.google:hover,
+.facebook:hover {
+  background: #F5F5F5;
+}
