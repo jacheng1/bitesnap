@@ -6,15 +6,34 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
+import { LuMapPin } from "react-icons/lu";
 import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt, FaStar, FaRegStar, FaThumbsUp, FaRegThumbsUp, FaThumbsDown, FaRegThumbsDown } from "react-icons/fa";
 import { MdChatBubbleOutline } from "react-icons/md";
 
 import "./page.css";
 
 const images = [
-  { src: "/Home_Picture_1.svg", alt: "Home Food 1", caption: "Urban Plates", location: "Irvine, CA", link: "https://urbanplates.com/" },
-  { src: "/Home_Picture_2.svg", alt: "Home Food 2", caption: "SUP Noodle Bar", location: "Buena Park, CA", link: "https://www.supnoodlebar.com/" },
-  { src: "/Home_Picture_3.svg", alt: "Home Food 3", caption: "Menya Hanabi - The Original Nagoya Mazesoba", location: "Los Angeles, CA", link: "https://menyahanabiusa.com/" },
+  { 
+    src: "/Home_Picture_1.svg", 
+    alt: "Home Food 1", 
+    caption: "Urban Plates", 
+    location: "Irvine, CA", 
+    link: "https://urbanplates.com/" 
+  },
+  { 
+    src: "/Home_Picture_2.svg", 
+    alt: "Home Food 2", 
+    caption: "SUP Noodle Bar", 
+    location: "Buena Park, CA", 
+    link: "https://www.supnoodlebar.com/" 
+  },
+  { 
+    src: "/Home_Picture_3.svg", 
+    alt: "Home Food 3", 
+    caption: "Menya Hanabi - The Original Nagoya Mazesoba", 
+    location: "Los Angeles, CA", 
+    link: "https://menyahanabiusa.com/" 
+  },
 ];
 
 const dropdownSuggestions = [
@@ -35,6 +54,13 @@ const dropdownSuggestions = [
     img: "/Food_Card_Picture_3.svg",
     name: "Ever After Team Room & Eatery",
     location: "18090 Culver Dr, Irvine, CA",
+  }
+];
+
+const locationSuggestions = [
+  { 
+    id: 1, 
+    name: "Current Location" 
   }
 ];
 
@@ -83,6 +109,8 @@ export default function Home() {
   const [slideIn, setSlideIn] = useState(false);
   const [next, setNext] = useState<number | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
+  const [locationInput, setLocationInput] = useState("");
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   const router = useRouter();
@@ -91,6 +119,8 @@ export default function Home() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profileBtnRef = useRef<HTMLButtonElement>(null);
   const profileDropdownRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLInputElement>(null);
+  const locationDropdownRef = useRef<HTMLDivElement>(null);
 
   interface HandleCircleClick {
     (idx: number): void;
@@ -149,6 +179,27 @@ export default function Home() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        locationRef.current &&
+        !locationRef.current.contains(event.target as Node) &&
+        locationDropdownRef.current &&
+        !locationDropdownRef.current.contains(event.target as Node)
+      ) {
+        setLocationDropdownOpen(false);
+      }
+    }
+    if (locationDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [locationDropdownOpen]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -261,7 +312,7 @@ export default function Home() {
                       />
                       <div className="header-search-info">
                         <span className="header-search-restaurant">{item.name}</span>
-                        <span className="header-search-location">
+                        <span className="header-search-restaurant-location">
                           {item.location}
                         </span>
                       </div>
@@ -275,11 +326,45 @@ export default function Home() {
             <div className="header-search-divider"></div>
 
             {/* Location searchbar */}
-            <input
-              type="text"
-              className="header-location-search"
-              placeholder="City, State"
-            />
+            <div className="header-search-divider"></div>
+
+            <div style={{ position: "relative", flex: 1 }}>
+              <input
+                type="text"
+                className="header-location-search"
+                placeholder="City, State"
+                value={locationInput}
+                onFocus={() => setLocationDropdownOpen(true)}
+                onChange={e => setLocationInput(e.target.value)}
+                ref={locationRef}
+                autoComplete="off"
+              />
+              {locationDropdownOpen && (
+              <div className="header-search-location-dropdown" ref={locationDropdownRef}>
+                {locationSuggestions
+                  .filter(loc =>
+                    loc.name.toLowerCase().includes(locationInput.toLowerCase())
+                  )
+                  .map(loc => (
+                    <div
+                      className="header-search-row"
+                      key={loc.id}
+                      onClick={() => {
+                        setLocationInput(loc.name);
+                        setLocationDropdownOpen(false);
+                      }}
+                    >
+                      <div className="header-search-info">
+                        <span className="header-search-location">
+                          <LuMapPin style={{ marginRight: "1rem", color: "#00BAC4" }} size={20} />
+                          {loc.name}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Search icon */}
             <span className="header-search-icon">

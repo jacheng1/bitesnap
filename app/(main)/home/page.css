@@ -183,7 +183,7 @@
     border: none;
     border-top-left-radius: 5px;
     padding: 1rem 3.5rem 1rem 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     z-index: 2;
 }
 
@@ -206,10 +206,26 @@
     z-index: 2;
 }
 
+.header-search-location-dropdown {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 85%;
+    max-height: 250px;
+    background: #FFFFFF;
+    border-top: 1px solid lightgray;
+    border-radius: 0 0 8px 8px;
+    overflow-y: auto;
+    z-index: 2;
+}
+
 .header-search-row {
     display: flex;
     align-items: center;
-    padding: 1rem 1.5rem;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
     cursor: pointer;
 }
 
@@ -226,13 +242,19 @@
 }
 
 .header-search-restaurant {
+    font-size: 0.9rem;
+    color: #222831;
+}
+
+.header-search-restaurant-location {
+    display: block;
     font-size: 0.8rem;
     color: #222831;
 }
 
 .header-search-location {
     display: block;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: #222831;
 }
 
@@ -244,14 +266,14 @@
 }
 
 .header-location-search {
-    width: 50%;
+    width: 100%;
     height: 60px;
     background: #FFFFFF;
     border: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 1rem 3.5rem 1rem 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .header-location-search:focus {
