@@ -410,7 +410,7 @@
     background: none;
     color: #FFFFFF;
     padding: 0.3rem 1rem;
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
     font-weight: bold;
     text-align: center;
     width: 100%;
@@ -450,7 +450,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 1.1rem 1.3rem 1.1rem 1.3rem;
+    padding: 1.1rem 1.3rem 2rem 1.3rem;
     background: none;
     color: #FFFFFF;
     text-align: left;
@@ -465,7 +465,7 @@
 .for-you-food-dish {
     font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.2rem;
 }
 
 .for-you-food-rating {

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt, FaStar, FaRegStar, FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt, FaStar, FaRegStar, FaThumbsUp, FaRegThumbsUp, FaThumbsDown, FaRegThumbsDown } from "react-icons/fa";
 import { MdChatBubbleOutline } from "react-icons/md";
 
 import "./page.css";
@@ -37,6 +37,45 @@ const dropdownSuggestions = [
     location: "18090 Culver Dr, Irvine, CA",
   }
 ];
+
+function FoodRatingWithThumbs(){
+  const [thumbUp, setThumbUp] = useState(false);
+  const [thumbDown, setThumbDown] = useState(false);
+
+  return (
+    <>
+      <span className="for-you-food-thumbs">
+        {thumbUp ? (
+          <FaThumbsUp
+            className="for-you-food-thumb"
+            style={{ cursor: "pointer" }}
+            onClick={() => setThumbUp(false)}
+          />
+        ) : (
+          <FaRegThumbsUp
+            className="for-you-food-thumb"
+            style={{ cursor: "pointer" }}
+            onClick={() => setThumbUp(true)}
+          />
+        )}
+        <span style={{ display: "inline-block", width: "1.2rem" }}></span>
+        {thumbDown ? (
+          <FaThumbsDown
+            className="for-you-food-thumb"
+            style={{ cursor: "pointer" }}
+            onClick={() => setThumbDown(false)}
+          />
+        ) : (
+          <FaRegThumbsDown
+            className="for-you-food-thumb"
+            style={{ cursor: "pointer" }}
+            onClick={() => setThumbDown(true)}
+          />
+        )}
+      </span>
+    </>
+  );
+};
 
 export default function Home() {
   const [current, setCurrent] = useState(0);
@@ -326,9 +365,8 @@ export default function Home() {
                 <FaStar />
                 <FaRegStar />
                 <span className="for-you-food-rating-actions">
+                  <FoodRatingWithThumbs />
                   <MdChatBubbleOutline className="for-you-food-comment" />
-                  <FaRegThumbsUp className="for-you-food-thumb" />
-                  <FaRegThumbsDown className="for-you-food-thumb" />
                 </span>
               </div>
             </div>
@@ -355,9 +393,8 @@ export default function Home() {
                   <FaStar />
                   <FaRegStar />
                   <span className="for-you-food-rating-actions">
+                    <FoodRatingWithThumbs />
                     <MdChatBubbleOutline className="for-you-food-comment" />
-                    <FaRegThumbsUp className="for-you-food-thumb" />
-                    <FaRegThumbsDown className="for-you-food-thumb" />
                   </span>
                 </div>
               </div>
@@ -383,9 +420,8 @@ export default function Home() {
                   <FaStar />
                   <FaRegStar />
                   <span className="for-you-food-rating-actions">
+                    <FoodRatingWithThumbs />
                     <MdChatBubbleOutline className="for-you-food-comment" />
-                    <FaRegThumbsUp className="for-you-food-thumb" />
-                    <FaRegThumbsDown className="for-you-food-thumb" />
                   </span>
                 </div>
               </div>
