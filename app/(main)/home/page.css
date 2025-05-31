@@ -442,8 +442,8 @@
 
 .for-you-food-card {
     position: relative;
-    width: 450px;
-    height: 600px;
+    width: 550px;
+    height: 650px;
     margin-top: 2rem;
     border-radius: 25px;
     background: #222831;
@@ -488,7 +488,7 @@
 }
 
 .for-you-food-card-short {
-    height: 284px;
+    height: 309px;
     margin-top: 2rem;
     align-self: flex-start;
 }
