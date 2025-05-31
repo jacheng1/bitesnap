@@ -103,6 +103,24 @@ function FoodRatingWithThumbs(){
   );
 };
 
+function CardUserBox({ img, name, text }: { img: string; name: string; text: string }) {
+  return (
+    <div className="for-you-user-box">
+      <Image
+        src={img}
+        alt={name}
+        width={38}
+        height={38}
+        className="for-you-user-img"
+      />
+      <div className="for-you-user-info">
+        <div className="for-you-user-name">{name}</div>
+        <div className="for-you-user-text">{text}</div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -432,6 +450,11 @@ export default function Home() {
         <div className="for-you-food-cards-row">
           {/* Tall food card */}
           <div className="for-you-food-card">
+            <CardUserBox
+              img="/Profile_Picture_2.svg"
+              name="Gus G."
+              text="Just now"
+            />
             <Image
               src="/Food_Card_Picture_1.svg"
               alt="NEP CAFE - Irvine Beef Tongue Fried Rice"
@@ -460,6 +483,11 @@ export default function Home() {
           <div className="for-you-food-card-column">
             {/* Secondary food card */}
             <div className="for-you-food-card for-you-food-card-short">
+              <CardUserBox
+                img="/Profile_Picture_3.svg"
+                name="Bob R."
+                text="5 minutes ago"
+              />
               <Image
                 src="/Food_Card_Picture_2.svg"
                 alt="Yup Dduk - Yup O"
@@ -487,6 +515,11 @@ export default function Home() {
 
             {/* Tertiary food card */}
             <div className="for-you-food-card for-you-food-card-short">
+              <CardUserBox
+                img="/Profile_Picture_4.svg"
+                name="Alice T."
+                text="26 minutes ago"
+              />
               <Image
                 src="/Food_Card_Picture_3.svg"
                 alt="Ever After Tea Room & Eatery"

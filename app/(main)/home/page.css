@@ -6,7 +6,7 @@
 }
 
 .page-container {
-    background: #222831;
+    background: #1b2027;
 }
 
 .header-container {
@@ -453,6 +453,38 @@
 
 .for-you-food-card:hover {
     transform: scale(1.03);
+}
+
+.for-you-user-box {
+    display: flex;
+    padding: 0.7rem 1.1rem 0.7rem 0.7rem;
+    background: #222831;
+    z-index: 2;
+}
+
+.for-you-user-img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 38px;
+    height: 38px;
+    margin-right: 0.8rem;
+}
+
+.for-you-user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.for-you-user-name {
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    margin-bottom: 0.1rem;
+}
+
+.for-you-user-text {
+    font-size: 0.8rem;
+    color: #B0B0B0;
 }
 
 .for-you-food-card-short {
