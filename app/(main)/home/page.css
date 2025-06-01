@@ -40,22 +40,66 @@
     will-change: transform;
 }
 
-.header-image-slide.prev {
-    z-index: 1;
-    transform: translateX(0%);
-}
-
-.header-image-slide.prev.slide-out {
+/* Outgoing slide */
+.header-image-slide.slide-out-left {
     transform: translateX(-100%);
 }
-
-.header-image-slide.next {
-    z-index: 2;
+.header-image-slide.slide-out-right {
     transform: translateX(100%);
 }
 
-.header-image-slide.next.slide-in {
+/* Incoming slide */
+.header-image-slide.next.slide-in-right {
     transform: translateX(0%);
+}
+.header-image-slide.next.slide-in-left {
+    transform: translateX(0%);
+}
+
+/* Initial positions for next image */
+.header-image-slide.next {
+    z-index: 2;
+    /* Default: hidden, but we set the transform below based on direction */
+    transform: none;
+}
+
+/* When animating, set the correct starting position for the next image */
+.header-image-slide.next.slide-in-right {
+    /* Start from right, then animate to center */
+    transform: translateX(100%);
+    animation: slideInRight 0.7s forwards;
+}
+.header-image-slide.next.slide-in-left {
+    /* Start from left, then animate to center */
+    transform: translateX(-100%);
+    animation: slideInLeft 0.7s forwards;
+}
+
+/* Animate to center */
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0%); }
+}
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0%); }
+}
+
+/* Outgoing slide */
+.header-image-slide.prev.slide-out-left {
+    animation: slideOutLeft 0.7s forwards;
+}
+.header-image-slide.prev.slide-out-right {
+    animation: slideOutRight 0.7s forwards;
+}
+
+@keyframes slideOutLeft {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-100%); }
+}
+@keyframes slideOutRight {
+    from { transform: translateX(0%); }
+    to { transform: translateX(100%); }
 }
 
 .header-image-caption {

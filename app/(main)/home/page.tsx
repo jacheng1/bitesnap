@@ -126,6 +126,7 @@ export default function Home() {
   const [animating, setAnimating] = useState(false);
   const [slideIn, setSlideIn] = useState(false);
   const [next, setNext] = useState<number | null>(null);
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
   const [locationInput, setLocationInput] = useState("");
@@ -149,6 +150,7 @@ export default function Home() {
       return;
     }
 
+    setSlideDirection(idx > current ? "right" : "left");
     setNext(idx);
     setAnimating(true);
     setSlideIn(false);
@@ -248,7 +250,11 @@ export default function Home() {
           <Image
             className={
               "header-image-slide prev" +
-              (animating && next !== null ? " slide-out" : "")
+              (animating && next !== null
+                ? slideDirection === "right"
+                  ? " slide-out-left"
+                  : " slide-out-right"
+                : "")
             }
             src={images[current].src}
             alt={images[current].alt}
@@ -261,7 +267,12 @@ export default function Home() {
             <Image
               key={next}
               className={
-                "header-image-slide next" + (slideIn ? " slide-in" : "")
+                "header-image-slide next" +
+                (slideIn
+                  ? slideDirection === "right"
+                    ? " slide-in-right"
+                    : " slide-in-left"
+                  : "")
               }
               src={images[next].src}
               alt={images[next].alt}
