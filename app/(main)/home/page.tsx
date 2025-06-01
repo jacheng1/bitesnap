@@ -557,6 +557,70 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Row of two food cards */}
+        <div className="for-you-food-cards-row" style={{ marginTop: "0.5rem" }}>
+          <div className="for-you-food-card for-you-food-card-mid">
+            <CardUserBox
+              img="/Profile_Picture_5.svg"
+              name="Sandy L."
+              text="2 hours ago"
+            />
+            <Image
+              src="/Food_Card_Picture_4.svg"
+              alt="In-N-Out"
+              width={340}
+              height={100}
+              className="for-you-food-img"
+              style={{ objectFit: "cover", borderRadius: "16px" }}
+            />
+            <div className="for-you-food-caption">
+              <div className="for-you-food-restaurant">In-N-Out</div>
+              <div className="for-you-food-dish">Double-Double</div>
+              <div className="for-you-food-rating">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <span className="for-you-food-rating-actions">
+                  <FoodRatingWithThumbs />
+                  <MdChatBubbleOutline className="for-you-food-comment" />
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="for-you-food-card for-you-food-card-mid">
+            <CardUserBox
+              img="/Profile_Picture_6.svg"
+              name="Mike D."
+              text="7 hours ago"
+            />
+            <Image
+              src="/Food_Card_Picture_5.svg"
+              alt="The Chicken Shop"
+              width={340}
+              height={100}
+              className="for-you-food-img"
+              style={{ objectFit: "cover", borderRadius: "16px" }}
+            />
+            <div className="for-you-food-caption">
+              <div className="for-you-food-restaurant">The Chicken Shop</div>
+              <div className="for-you-food-dish">OG Wrap</div>
+              <div className="for-you-food-rating">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaRegStar />
+                <span className="for-you-food-rating-actions">
+                  <FoodRatingWithThumbs />
+                  <MdChatBubbleOutline className="for-you-food-comment" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

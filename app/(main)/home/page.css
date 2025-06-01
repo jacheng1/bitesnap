@@ -537,6 +537,12 @@
     align-self: flex-start;
 }
 
+.for-you-food-card-mid {
+    height: 450px;
+    margin-top: 2rem;
+    align-self: flex-start;
+}
+
 .for-you-food-img {
     display: block;
     width: 100%;
@@ -579,7 +585,7 @@
     gap: 1.2rem;
     color: #FFFFFF;
     font-size: 1.3rem;
-    margin-left: 12rem;
+    margin-left: 18rem;
 }
 
 .for-you-food-comment,
