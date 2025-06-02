@@ -1,11 +1,217 @@
 "use client";
 
+import { useEffect } from "react";
+
 import "./page.css";
 
 export default function Restaurant() {
+  useEffect(() => {
+    const $ = (str: string) => document.querySelector(str);
+
+    // @ts-ignore
+    if (!window.app) window.app = {};
+    // @ts-ignore
+    const app = window.app;
+
+    app.carousel = {
+      removeClass: function(el: { className: string; classList: { remove: (arg0: string) => void; }; }, classname = '') {
+        if (el) {
+          if (classname === '') {
+            el.className = '';
+          } else {
+            el.classList.remove(classname);
+          }
+
+          return el;
+        }
+        
+        return;
+      },
+      reorder: function() {
+        const carousel = $("#carousel");
+        if (!carousel) return;
+        const childcnt = carousel.children.length;
+        const childs = carousel.children;
+        for (let j = 0; j < childcnt; j++) {
+          childs[j].dataset.pos = j;
+        }
+      },
+      move: function(el) {
+        let selected = el;
+        if (typeof el === "string") {
+          selected = (el === "next")
+            ? $(".selected").nextElementSibling
+            : $(".selected").previousElementSibling;
+        }
+
+        const curpos = parseInt(app.selected.dataset.pos);
+        const tgtpos = parseInt(selected.dataset.pos);
+        const cnt = curpos - tgtpos;
+        const dir = (cnt < 0) ? -1 : 1;
+        const shift = Math.abs(cnt);
+
+        for (let i = 0; i < shift; i++) {
+          const el = (dir === -1)
+            ? $("#carousel").firstElementChild
+            : $("#carousel").lastElementChild;
+          if (dir === -1) {
+            el.dataset.pos = $("#carousel").children.length;
+            $('#carousel').append(el);
+          } else {
+            el.dataset.pos = 0;
+            $('#carousel').prepend(el);
+          }
+
+          app.carousel.reorder();
+        }
+
+        app.selected = selected;
+        const next = selected.nextElementSibling;
+        const prev = selected.previousElementSibling;
+        const prevSecond = prev ? prev.previousElementSibling : selected.parentElement.lastElementChild;
+        const nextSecond = next ? next.nextElementSibling : selected.parentElement.firstElementChild;
+
+        selected.className = '';
+        selected.classList.add("selected");
+
+        app.carousel.removeClass(prev).classList.add('prev');
+        app.carousel.removeClass(next).classList.add('next');
+        app.carousel.removeClass(nextSecond).classList.add("nextRightSecond");
+        app.carousel.removeClass(prevSecond).classList.add("prevLeftSecond");
+
+        app.carousel.nextAll(nextSecond).forEach((item: { className: string; classList: { add: (arg0: string) => void; }; }) => { item.className = ''; item.classList.add('hideRight') });
+        app.carousel.prevAll(prevSecond).forEach((item: { className: string; classList: { add: (arg0: string) => void; }; }) => { item.className = ''; item.classList.add('hideLeft') });
+      },
+      nextAll: function(el) {
+        const els = [];
+        if (el) {
+          while (el = el.nextElementSibling) { els.push(el); }
+        }
+
+        return els;
+      },
+      prevAll: function(el) {
+        const els = [];
+        if (el) {
+          while (el = el.previousElementSibling) { els.push(el); }
+        }
+
+        return els;
+      },
+      keypress: function(e) {
+        switch (e.which) {
+          case 37:
+            app.carousel.move('prev');
+
+            break;
+          case 39:
+            app.carousel.move('next');
+
+            break;
+          default:
+            return;
+        }
+
+        e.preventDefault();
+
+        return false;
+      },
+      select: function(e) {
+        let tgt = e.target;
+        while (!tgt.parentElement.classList.contains('carousel')) {
+          tgt = tgt.parentElement;
+        }
+
+        app.carousel.move(tgt);
+      },
+      previous: function(e) {
+        app.carousel.move('prev');
+      },
+      next: function(e) {
+        app.carousel.move('next');
+      },
+      doDown: function(e) {
+        app.carousel.state.downX = e.x;
+      },
+      doUp: function(e) {
+        let direction = 0
+
+        if (app.carousel.state.downX) {
+          direction = (app.carousel.state.downX > e.x) ? -1 : 1;
+          if (Math.abs(app.carousel.state.downX - e.x) < 10) {
+            app.carousel.select(e);
+            return false;
+          }
+
+          if (direction === -1) {
+            app.carousel.move('next');
+          } else {
+            app.carousel.move('prev');
+          }
+
+          app.carousel.state.downX = 0;
+        }
+      },
+      init: function() {
+        document.addEventListener("keydown", app.carousel.keypress);
+        if ($("#carousel")) {
+          $("#carousel").addEventListener("mousedown", app.carousel.doDown);
+          $("#carousel").addEventListener("touchstart", app.carousel.doDown);
+          $("#carousel").addEventListener("mouseup", app.carousel.doUp);
+          $("#carousel").addEventListener("touchend", app.carousel.doUp);
+          app.carousel.reorder();
+        }
+        const prevBtn = $('#prev');
+        if (prevBtn) prevBtn.addEventListener("click", app.carousel.previous);
+        const nextBtn = $('#next');
+        if (nextBtn) nextBtn.addEventListener("click", app.carousel.next);
+        app.selected = $(".selected");
+      },
+      state: {}
+    };
+
+    app.carousel.init();
+  }, []);
+
   return (
-    <div>
-      This will be the Restaurant page.
+    <div className="page-container">
+      <div className="restaurant-header">
+        In-N-Out Burger
+      </div>
+      
+      <div id="carousel" className="carousel">
+        <div id='item_1' className="hideLeft">
+          <img src="/Restaurant_Food_Photo_1.svg" />
+        </div>
+
+        <div id='item_2' className="prevLeftSecond">
+          <img src="/Restaurant_Food_Photo_2.svg" />
+        </div>
+
+        <div id='item_3' className="prev">
+          <img src="/Restaurant_Food_Photo_3.svg" />
+        </div>
+
+        <div id='item_4' className="selected">
+          <img src="/Restaurant_Food_Photo_4.svg" />
+        </div>
+
+        <div id='item_5' className="next">
+          <img src="/Restaurant_Food_Photo_5.svg" />
+        </div>
+
+        <div id='item_6' className="nextRightSecond">
+          <img src="/Restaurant_Food_Photo_6.svg" />
+        </div>
+
+        <div id='item_7' className="hideRight">
+          <img src="/Restaurant_Food_Photo_7.svg" />
+        </div>
+
+        <div id='item_8' className="hideRight">
+          <img src="/Restaurant_Food_Photo_8.svg" />
+        </div>
+      </div>
     </div>
   );
-}
+};

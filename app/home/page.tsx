@@ -592,14 +592,14 @@ export default function Home() {
             />
             <Image
               src="/Food_Card_Picture_4.svg"
-              alt="In-N-Out"
+              alt="In-N-Out Burger"
               width={340}
               height={100}
               className="for-you-food-img"
               style={{ objectFit: "cover", borderRadius: "16px" }}
             />
             <div className="for-you-food-caption">
-              <div className="for-you-food-restaurant">In-N-Out</div>
+              <div className="for-you-food-restaurant">In-N-Out Burger</div>
               <div className="for-you-food-dish">Double-Double</div>
               <div className="for-you-food-rating">
                 <FaStar />
