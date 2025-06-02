@@ -315,7 +315,13 @@ export default function Home() {
         </div>
         <div className="header-top-shade"></div>
         <div className="header-overlay">
-          <span className="header-title">BiteSnap</span>
+          {/* Navbar title button */}
+          <button 
+            className="header-title-btn"
+            onClick={() => router.push("/home")}
+          >
+            BiteSnap
+          </button>
 
           <div className="header-search-container">
             {/* Restaurant name searchbar */}
@@ -401,12 +407,18 @@ export default function Home() {
             </span>
           </div>
           {/* Find a Restaurant button */}
-          <button className="header-action-btn find-restaurant-btn">
+          <button 
+            className="header-action-btn find-restaurant-btn"
+            onClick={() => router.push("/map")}
+          >
             Find a Restaurant
           </button>
 
           {/* Write a Review button */}
-          <button className="header-action-btn write-review-btn">
+          <button 
+            className="header-action-btn write-review-btn"
+            onClick={() => router.push("/review")}
+          >
             Write a Review
           </button>
 

@@ -203,14 +203,6 @@
     z-index: 3;
 }
 
-.header-title {
-    background: none;
-    color: #FFFFFF;
-    padding: 0.3rem 1rem;
-    font-size: 2rem !important;
-    font-weight: bold;
-}
-
 .header-search-container {
     display: flex;
     position: relative;
@@ -349,6 +341,16 @@
     color: #FFFFFF;
     width: 20px;
     height: 20px;
+}
+
+.header-title-btn {
+    background: none;
+    color: #FFFFFF;
+    border: none;
+    font-size: 2rem !important;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .header-action-btn {

@@ -120,8 +120,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex h-screen flex-col">
             <nav className="main-navbar">
                 <div className="main-navbar-content">
-                    {/* Navbar title */}
-                    <span className="main-navbar-title">BiteSnap</span>
+                    {/* Navbar title button */}
+                    <button 
+                      className="main-navbar-title-btn"
+                      onClick={() => router.push("/home")}
+                    >
+                      BiteSnap
+                    </button>
 
                     <div className="main-navbar-searchbars">
                         {/* Restaurant name searchbar */}
@@ -210,10 +215,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
                     <div className="main-navbar-actions">
                         {/* Find a Restaurant button */}
-                        <button className="main-navbar-action-btn">Find a Restaurant</button>
+                        <button 
+                          className="main-navbar-action-btn"
+                          onClick={() => router.push("/map")}
+                        >
+                          Find a Restaurant
+                        </button>
 
                         {/* Write a Review button */}
-                        <button className="main-navbar-action-btn">Write a Review</button>
+                        <button 
+                          className="main-navbar-action-btn"
+                          onClick={() => router.push("/review")}
+                        >
+                          Write a Review
+                        </button>
 
                         {/* Notifications button */}
                         <button className="main-navbar-action-btn bell-btn" aria-label="Notifications">
