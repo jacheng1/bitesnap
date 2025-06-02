@@ -6,16 +6,71 @@
 }
 
 .restaurant-page-container {
-    background: #1b2027;
-    padding: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #1B2027;
+    padding: 3rem 15rem 5rem 15rem;
+}
+
+.restaurant-page-header-row {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+.restaurant-page-header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-align: left;
+    padding-left: 0;
+    margin-left: 6rem;
+    margin-bottom: 0;
+}
+
+.restaurant-page-subheader {
+    font-size: 1.2rem;
+    color: #B0B0B0;
+    font-weight: 400;
+    margin-top: 0.4rem;
+    margin-left: 0;
+    text-align: left;
+}
+
+.restaurant-page-nav {
+    display: flex;
+    gap: 2.2rem;
+    margin-right: 6rem;
+    margin-bottom: 0.2rem;
+}
+
+.restaurant-page-nav-btn {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0 0 0.2rem 0;
+    border-bottom: 2.5px solid transparent;
+    transition: color 0.15s, border-bottom 0.15s;
+}
+
+.restaurant-page-nav-btn:hover,
+.restaurant-page-nav-btn:focus {
+    border-bottom: 2.5px solid #00ADB5;
+    outline: none;
 }
 
 .carousel {
   position: relative;
   height: 400px;
-  top: 50%;
-  transform: translateY(-50%);
   overflow: hidden;
+  width: 100%;
+  margin: 0;
 }
 
 .carousel div {

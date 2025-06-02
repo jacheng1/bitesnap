@@ -198,8 +198,26 @@ export default function Restaurant() {
 
   return (
     <div className="restaurant-page-container">
-      <div className="restaurant-page-header">
-        In-N-Out Burger
+
+      {/* Restaurant page header */}
+      <div className="restaurant-page-header-row">
+        <div>
+          <div className="restaurant-page-header">
+            In-N-Out Burger
+            
+            <div className="restaurant-page-subheader">
+              Irvine, California
+            </div>
+          </div>
+        </div>
+
+        {/* Restaurant page navigation buttons */}
+        <div className="restaurant-page-nav">
+          <button className="restaurant-page-nav-btn">Menu</button>
+          <button className="restaurant-page-nav-btn">Photos</button>
+          <button className="restaurant-page-nav-btn">Reviews</button>
+          <button className="restaurant-page-nav-btn">Map</button>
+        </div>
       </div>
       
       <div id="carousel" className="carousel">
