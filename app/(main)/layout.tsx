@@ -28,7 +28,19 @@ const dropdownSuggestions = [
     img: "/Food_Card_Picture_3.svg",
     name: "Ever After Team Room & Eatery",
     location: "18090 Culver Dr, Irvine, CA",
-  }
+  },
+  {
+    id: 4,
+    img: "/Food_Card_Picture_4.svg",
+    name: "In-N-Out",
+    location: "4115 Campus Dr, Irvine, CA",
+  },
+  {
+    id: 5,
+    img: "/Food_Card_Picture_5.svg",
+    name: "The Chicken Shop",
+    location: "1120 Irvine Ave, Newport Beach, CA",
+  },
 ];
 
 const locationSuggestions = [
