@@ -51,15 +51,29 @@ export default function Restaurant() {
         const shift = Math.abs(cnt);
 
         for (let i = 0; i < shift; i++) {
+          const carouselEl = $("#carousel");
           const el = (dir === -1)
-            ? $("#carousel").firstElementChild
-            : $("#carousel").lastElementChild;
+            ? (carouselEl ? carouselEl.firstElementChild : null)
+            : (carouselEl ? carouselEl.lastElementChild : null);
           if (dir === -1) {
-            el.dataset.pos = $("#carousel").children.length;
-            $('#carousel').append(el);
+            const carousel = $("#carousel");
+            if (carousel) {
+              if (el) {
+                el.dataset.pos = carousel.children.length;
+              }
+              const carouselElem = $('#carousel');
+              if (carouselElem && el) {
+                carouselElem.append(el);
+              }
+            }
           } else {
-            el.dataset.pos = 0;
-            $('#carousel').prepend(el);
+            if (el) {
+              el.dataset.pos = 0;
+              const carouselElem = $('#carousel');
+              if (carouselElem) {
+                carouselElem.prepend(el);
+              }
+            }
           }
 
           app.carousel.reorder();
@@ -124,21 +138,29 @@ export default function Restaurant() {
 
         app.carousel.move(tgt);
       },
-      previous: function(e) {
+      previous: function() {
         app.carousel.move('prev');
       },
-      next: function(e) {
+      next: function() {
         app.carousel.move('next');
-      },
-      doDown: function(e) {
-        app.carousel.state.downX = e.x;
-      },
-      doUp: function(e) {
+            } as () => void,
+            doDown: function(e: MouseEvent | TouchEvent) {
+        app.carousel.state.downX = (e instanceof MouseEvent) ? e.x : (e.touches && e.touches[0].clientX);
+            } as (e: MouseEvent | TouchEvent) => void,
+            doUp: function(e: MouseEvent | TouchEvent) {
         let direction = 0
 
         if (app.carousel.state.downX) {
-          direction = (app.carousel.state.downX > e.x) ? -1 : 1;
-          if (Math.abs(app.carousel.state.downX - e.x) < 10) {
+          let upX: number;
+          if (e instanceof MouseEvent) {
+            upX = e.clientX;
+          } else if ('touches' in e && e.changedTouches && e.changedTouches.length > 0) {
+            upX = e.changedTouches[0].clientX;
+          } else {
+            upX = 0;
+          }
+          direction = (app.carousel.state.downX > upX) ? -1 : 1;
+          if (Math.abs(app.carousel.state.downX - upX) < 10) {
             app.carousel.select(e);
             return false;
           }
@@ -154,11 +176,12 @@ export default function Restaurant() {
       },
       init: function() {
         document.addEventListener("keydown", app.carousel.keypress);
-        if ($("#carousel")) {
-          $("#carousel").addEventListener("mousedown", app.carousel.doDown);
-          $("#carousel").addEventListener("touchstart", app.carousel.doDown);
-          $("#carousel").addEventListener("mouseup", app.carousel.doUp);
-          $("#carousel").addEventListener("touchend", app.carousel.doUp);
+        const carouselEl = $("#carousel");
+        if (carouselEl) {
+          carouselEl.addEventListener("mousedown", app.carousel.doDown);
+          carouselEl.addEventListener("touchstart", app.carousel.doDown);
+          carouselEl.addEventListener("mouseup", app.carousel.doUp);
+          carouselEl.addEventListener("touchend", app.carousel.doUp);
           app.carousel.reorder();
         }
         const prevBtn = $('#prev');
