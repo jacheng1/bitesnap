@@ -40,8 +40,8 @@ export default function Restaurant() {
         let selected = el;
         if (typeof el === "string") {
           selected = (el === "next")
-            ? $(".selected").nextElementSibling
-            : $(".selected").previousElementSibling;
+            ? ($(".selected" ) && $(".selected")!.nextElementSibling ? $(".selected")!.nextElementSibling : null)
+            : ($(".selected") && $(".selected")!.previousElementSibling ? $(".selected")!.previousElementSibling : null);
         }
 
         const curpos = parseInt(app.selected.dataset.pos);
@@ -174,8 +174,8 @@ export default function Restaurant() {
   }, []);
 
   return (
-    <div className="page-container">
-      <div className="restaurant-header">
+    <div className="restaurant-page-container">
+      <div className="restaurant-page-header">
         In-N-Out Burger
       </div>
       
