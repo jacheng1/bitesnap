@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { LuMapPin } from "react-icons/lu";
-import { FaRegBell, FaSearch, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt } from "react-icons/fa";
+import { FaRegBell, FaSearch, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt, FaChevronDown, FaRegCopyright } from "react-icons/fa";
 
 import "./layout.css";
 
@@ -129,7 +129,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }, [profileDropdownOpen]);
 
     return (
-        <div className="flex h-screen flex-col">
+        <div className="app-root">
             <nav className="main-navbar">
                 <div className="main-navbar-content">
                     {/* Navbar title button */}
@@ -292,6 +292,46 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Page content */}
             <div className="main-content">{children}</div>
+
+            {/* Footer */}
+            <footer className="footer">
+              <div className="footer-col">
+                <div className="footer-title">About BiteSnap</div>
+                <div className="footer-link">About Us</div>
+                <div className="footer-link">Press</div>
+                <div className="footer-link">Careers</div>
+                <div className="footer-link">Resources and Policies</div>
+                <div className="footer-link">Content Guidelines</div>
+                <div className="footer-link">Contact Us</div>
+                <div className="footer-link">Accessibility Statement</div>
+                <div className="footer-link">Terms of Service</div>
+                <div className="footer-link">Privacy Policy</div>
+              </div>
+              <div className="footer-col">
+                <div className="footer-title">Explore</div>
+                <div className="footer-link">Write a Review</div>
+                <div className="footer-link">Add a Restaurant</div>
+                <div className="footer-link">Join</div>
+                <div className="footer-link">Help Center</div>
+                <div className="footer-link">Support</div>
+              </div>
+              <div className="footer-col">
+                <div className="footer-title">Languages</div>
+                <div className="footer-link">
+                  English
+                  <FaChevronDown style={{ marginLeft: "0.5rem", fontSize: "0.6em", verticalAlign: "middle" }} />
+                </div>
+              </div>
+      
+              {/* Horizontal line */}
+              <hr className="footer-hr" />
+      
+              <div className="footer-copyright">
+                <span>Copyright</span>
+                <FaRegCopyright className="footer-copyright-icon" />
+                <span>2025 BiteSnap LLC</span>
+              </div>
+            </footer>
         </div>
     );
 };

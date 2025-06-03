@@ -11,6 +11,8 @@
     align-items: flex-start;
     background: #1B2027;
     padding: 3rem 15rem 5rem 15rem;
+    flex: 1 0 auto;
+    min-height: 0;
 }
 
 .restaurant-page-header-row {

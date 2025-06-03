@@ -263,3 +263,17 @@
     align-self: center;
     border: none !important;
 }
+
+.app-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #1B2027;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 0;
+}
