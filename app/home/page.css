@@ -663,6 +663,7 @@
     width: 100%;
     border: none;
     border-top: 1.5px solid #393e46;
+    margin-top: -2rem;
     position: static;
 }
 
