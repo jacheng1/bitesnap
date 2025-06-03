@@ -32,7 +32,7 @@ const dropdownSuggestions = [
   {
     id: 4,
     img: "/Food_Card_Picture_4.svg",
-    name: "In-N-Out",
+    name: "In-N-Out Burger",
     location: "4115 Campus Dr, Irvine, CA",
   },
   {
