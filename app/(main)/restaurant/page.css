@@ -61,8 +61,14 @@
 
 .restaurant-page-nav-btn:hover,
 .restaurant-page-nav-btn:focus {
+    color: #00ADB5;
     border-bottom: 2.5px solid #00ADB5;
     outline: none;
+}
+
+.restaurant-page-nav-btn.active {
+    color: #00ADB5;
+    border-bottom: 2.5px solid #00ADB5;
 }
 
 .carousel {

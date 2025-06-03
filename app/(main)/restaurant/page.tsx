@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+import Link from "next/link";
+
 import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 import "./page.css";
@@ -215,7 +217,7 @@ export default function Restaurant() {
 
         {/* Restaurant page navigation buttons */}
         <div className="restaurant-page-nav">
-          <button className="restaurant-page-nav-btn">Menu</button>
+          <button className="restaurant-page-nav-btn active">Info</button>
           <button className="restaurant-page-nav-btn">Photos</button>
           <button className="restaurant-page-nav-btn">Reviews</button>
           <button className="restaurant-page-nav-btn">Map</button>
@@ -262,7 +264,9 @@ export default function Restaurant() {
           Classic burger chain serving customizable burgers, hand-cut fries & shakes.
         </div>
         <div className="restaurant-page-desc-actions">
-          <button className="restaurant-page-desc-btn">Check In</button>
+          <Link href="https://www.in-n-out.com/menu" passHref target="_blank">
+            <button className="restaurant-page-desc-btn">View Menu</button>
+          </Link>
           <button className="restaurant-page-desc-btn">Snap a Pic</button>
         </div>
       </div>
