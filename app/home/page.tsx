@@ -186,7 +186,7 @@ export default function Home() {
 
         handleCircleClick(nextIdx);
       }
-    }, 10000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [current, animating]);
