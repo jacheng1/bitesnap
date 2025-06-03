@@ -584,7 +584,7 @@ export default function Home() {
 
         {/* Row of two food cards */}
         <div className="for-you-food-cards-row" style={{ marginTop: "0.5rem" }}>
-          <div className="for-you-food-card for-you-food-card-mid">
+          <Link  href="/restaurant" className="for-you-food-card for-you-food-card-mid" style={{ textDecoration: "none", color: "inherit" }}>
             <CardUserBox
               img="/Profile_Picture_5.svg"
               name="Sandy L."
@@ -613,7 +613,7 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="for-you-food-card for-you-food-card-mid">
             <CardUserBox
               img="/Profile_Picture_6.svg"

@@ -299,9 +299,9 @@ export default function Restaurant() {
             “Best burger spot in Irvine! Always fresh and quick.”
           </div>
           <div className="restaurant-page-friend-profile">
-            <span className="restaurant-page-friend-name">Gus G.</span>
+            <span className="restaurant-page-friend-name">Sandy L.</span>
             <img
-              src="/Profile_Picture_2.svg"
+              src="/Profile_Picture_5.svg"
               alt="Gus G."
               className="restaurant-page-friend-img"
             />
