@@ -269,6 +269,7 @@
     display: flex;
     flex-direction: column;
     background-color: #1B2027;
+    z-index: 90;
 }
 
 .main-content {

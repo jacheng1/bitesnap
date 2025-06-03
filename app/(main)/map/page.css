@@ -1,7 +1,6 @@
 .map-page-container {
     display: flex;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 100vh;
     min-height: 0;
@@ -11,6 +10,141 @@
     overflow-x: hidden;
     z-index: 0;
     box-sizing: border-box;
+}
+
+.map-sidebar {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: 100vh;
+    background: #1B2027;
+    box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.07);
+    border-right: none;
+    padding: 1.7rem 2.2rem 0 5.5rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #232832 #1B2027;
+    z-index: 2;
+}
+
+/* For Webkit browsers */
+.map-sidebar::-webkit-scrollbar {
+    width: 10px;
+    background: #1B2027;
+}
+
+.map-sidebar::-webkit-scrollbar-thumb {
+    background: #232832;
+    border-radius: 8px;
+}
+
+.map-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #393e46;
+}
+
+.map-sidebar-header {
+    position: relative;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.map-sidebar-divider {
+    width: 100%;
+    height: 1.5px;
+    background: #232832;
+    margin-bottom: 1.5rem;
+    border: none;
+    opacity: 1;
+}
+
+.map-sidebar-capsules-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.map-sidebar-capsule {
+    display: flex;
+    align-items: center;
+    background: #222831;
+    color: #B0B0B0;
+    border-radius: 999px;
+    padding: 0.55rem 1.3rem 0.55rem 1.1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    gap: 0.7rem;
+}
+
+.map-sidebar-capsule:hover {
+    background: #2a313c;
+}
+
+.map-sidebar-capsule-icon {
+    font-size: 1em;
+    color: #B0B0B0;
+    vertical-align: middle;
+}
+
+.map-sidebar-capsule-chevron {
+    font-size: 1em;
+    margin-left: 0.4rem;
+    color: #B0B0B0;
+}
+
+.map-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.map-sidebar-restaurant-row {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.5rem 0;
+}
+
+.map-sidebar-restaurant-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #232832;
+    flex-shrink: 0;
+}
+
+.map-sidebar-restaurant-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map-sidebar-restaurant-name {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.map-sidebar-restaurant-location {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.map-sidebar-restaurant-divider {
+    width: 100%;
+    height: 1px;
+    background: #232832;
+    margin: 0;
 }
 
 .google-map-full {
