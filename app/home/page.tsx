@@ -87,13 +87,13 @@ function FoodRatingWithThumbs(){
           <FaThumbsUp
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={() => setThumbUp(false)}
+            onClick={e => { e.stopPropagation(); e.preventDefault(); setThumbUp(false); }}
           />
         ) : (
           <FaRegThumbsUp
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={() => setThumbUp(true)}
+            onClick={e => { e.stopPropagation(); setThumbUp(true); }}
           />
         )}
         <span style={{ display: "inline-block", width: "1.2rem" }}></span>
@@ -101,13 +101,13 @@ function FoodRatingWithThumbs(){
           <FaThumbsDown
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={() => setThumbDown(false)}
+            onClick={e => { e.stopPropagation(); setThumbDown(false); }}
           />
         ) : (
           <FaRegThumbsDown
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={() => setThumbDown(true)}
+            onClick={e => { e.stopPropagation(); setThumbDown(true); }}
           />
         )}
       </span>
@@ -509,7 +509,13 @@ export default function Home() {
                 <FaRegStar />
                 <span className="for-you-food-rating-actions">
                   <FoodRatingWithThumbs />
-                  <MdChatBubbleOutline className="for-you-food-comment" />
+                  <MdChatBubbleOutline 
+                    className="for-you-food-comment" 
+                    onClick={e => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }}
+                  />
                 </span>
               </div>
             </div>
@@ -609,7 +615,13 @@ export default function Home() {
                 <FaStar />
                 <span className="for-you-food-rating-actions">
                   <FoodRatingWithThumbs />
-                  <MdChatBubbleOutline className="for-you-food-comment" />
+                  <MdChatBubbleOutline 
+                    className="for-you-food-comment" 
+                    onClick={e => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }}
+                  />
                 </span>
               </div>
             </div>
