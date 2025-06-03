@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
+
 import "./page.css";
 
 export default function Restaurant() {
@@ -251,6 +253,85 @@ export default function Restaurant() {
 
         <div id='item_8' className="hideRight">
           <img src="/Restaurant_Food_Photo_8.svg" />
+        </div>
+      </div>
+
+      {/* Description and action buttons */}
+      <div className="restaurant-page-desc-row">
+        <div className="restaurant-page-desc">
+          Classic burger chain serving customizable burgers, hand-cut fries & shakes.
+        </div>
+        <div className="restaurant-page-desc-actions">
+          <button className="restaurant-page-desc-btn">Check In</button>
+          <button className="restaurant-page-desc-btn">Snap a Pic</button>
+        </div>
+      </div>
+
+      {/* Stats/info row below description */}
+      <div className="restaurant-page-info-row">
+        <div className="restaurant-page-info-col">
+          <span className="restaurant-page-info-main"><span>89%</span> of your friends</span>
+          <span className="restaurant-page-info-sub">came back for more</span>
+        </div>
+
+        <div className="restaurant-page-info-col">
+          <span className="restaurant-page-info-main"><span>2.5x</span> more popular</span>
+          <span className="restaurant-page-info-sub">after midnight</span>
+        </div>
+
+        <div className="restaurant-page-info-col">
+          <span className="restaurant-page-info-right-main">
+            <FaMapMarkerAlt className="restaurant-page-info-icon" size={25} />
+            Still open if you leave within 10 minutes
+          </span>
+
+          <span className="restaurant-page-info-right-sub">
+            <FaClock className="restaurant-page-info-icon" size={25} />
+            Estimated 6-9 minute wait
+          </span>
+        </div>
+      </div>
+
+      {/* Friends boxes row */}
+      <div className="restaurant-page-friends-row">
+        <div className="restaurant-page-friend-box">
+          <div className="restaurant-page-friend-text">
+            “Best burger spot in Irvine! Always fresh and quick.”
+          </div>
+          <div className="restaurant-page-friend-profile">
+            <span className="restaurant-page-friend-name">Gus G.</span>
+            <img
+              src="/Profile_Picture_2.svg"
+              alt="Gus G."
+              className="restaurant-page-friend-img"
+            />
+          </div>
+        </div>
+        <div className="restaurant-page-friend-box">
+          <div className="restaurant-page-friend-text">
+            “Love the late-night fries and shakes. Highly recommend!”
+          </div>
+          <div className="restaurant-page-friend-profile">
+            <span className="restaurant-page-friend-name">Bob R.</span>
+            <img
+              src="/Profile_Picture_3.svg"
+              alt="Bob R."
+              className="restaurant-page-friend-img"
+            />
+          </div>
+        </div>
+        <div className="restaurant-page-friend-box">
+          <div className="restaurant-page-friend-text">
+            “Great place to hang out with friends after midnight.”
+          </div>
+          <div className="restaurant-page-friend-profile">
+            <span className="restaurant-page-friend-name">Alice T.</span>
+            <img
+              src="/Profile_Picture_4.svg"
+              alt="Alice T."
+              className="restaurant-page-friend-img"
+            />
+          </div>
         </div>
       </div>
     </div>
