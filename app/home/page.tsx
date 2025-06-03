@@ -657,6 +657,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <span className="show-more">
+          <FaChevronDown style={{ marginRight: "0.7rem", fontSize: "0.8em", verticalAlign: "middle" }} />
+          Show more posts
+        </span>
       </div>
 
       {/* Footer */}
