@@ -274,7 +274,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {profileDropdownOpen && (
                           <div className="profile-dropdown" ref={profileDropdownRef}>
                             <button className="profile-dropdown-btn">
-                              <FaUser className="profile-dropdown-icon" />
+                              <FaUser 
+                                className="profile-dropdown-icon" 
+                                onClick={() => router.push("/profile")}
+                              />
                               My Profile
                             </button>
                             <button className="profile-dropdown-btn">

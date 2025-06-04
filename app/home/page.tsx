@@ -465,7 +465,10 @@ export default function Home() {
           </button>
           {profileDropdownOpen && (
             <div className="profile-dropdown" ref={profileDropdownRef}>
-              <button className="profile-dropdown-btn">
+              <button 
+                className="profile-dropdown-btn"
+                onClick={() => router.push("/profile")}
+              >
                 <FaUser className="profile-dropdown-icon" />
                 My Profile
               </button>
