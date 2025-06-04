@@ -1,6 +1,8 @@
 "use client";
 
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { useState } from "react";
+
+import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
 
 import { IoPeopleSharp } from "react-icons/io5";
 import { LuMapPin } from "react-icons/lu";
@@ -50,7 +52,7 @@ const restaurantRows = [
     rating: 4,
     recommendedBy: 3,
     cost: 3,
-    capsules: ["Cafe", "Vietnamese"],
+    capsules: ["Vietnamese", "Cafe"],
   },
   {
     id: 2,
@@ -60,7 +62,7 @@ const restaurantRows = [
     rating: 4,
     recommendedBy: 2,
     cost: 1,
-    capsules: ["Korean", "Chicken Shop"],
+    capsules: ["Korean", "Chicken"],
   },
   {
     id: 3,
@@ -90,7 +92,7 @@ const restaurantRows = [
     rating: 4,
     recommendedBy: 1,
     cost: 2,
-    capsules: ["Chicken Shop", "Australian"],
+    capsules: ["Lebanese", "Australian", "Chicken"],
   },
 ];
 
@@ -103,6 +105,8 @@ const friendProfileImgs = [
 ];
 
 export default function Map() {
+  const [hoveredMarker, setHoveredMarker] = useState<number | null>(null);
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
@@ -112,6 +116,9 @@ export default function Map() {
       <div>Loading...</div>
     );
   }
+
+  // Helper to get restaurant by marker index
+  const getRestaurantByMarker = (idx: number) => restaurantRows[idx];
 
   return (
     <div className="map-page-container">
@@ -220,14 +227,59 @@ export default function Map() {
         zoom={12}
         options={{ streetViewControl: false, mapTypeControl: false }}
       >
-        {markerData.map((marker, idx) => (
-          <Marker
-            key={marker.name}
-            position={marker.position}
-            title={marker.name}
-          />
-        ))}
+        {markerData.map((marker, idx) => {
+          const restaurant = restaurantRows[idx];
+          return (
+            <Marker
+              key={marker.name}
+              position={marker.position}
+              title={marker.name}
+              onMouseOver={() => setHoveredMarker(idx)}
+              onMouseOut={() => setHoveredMarker(null)}
+            >
+              {hoveredMarker === idx && (
+                <InfoWindow
+                  position={marker.position}
+                  onCloseClick={() => setHoveredMarker(null)}
+                  options={{ pixelOffset: new window.google.maps.Size(0, -5) }}
+                >
+                  <div 
+                    style={{ minWidth: 220, maxWidth: 260 }}>
+                    <img
+                      src={restaurant.img}
+                      alt={restaurant.name}
+                      style={{
+                        width: "100%",
+                        height: 95,
+                        objectFit: "cover",
+                        borderRadius: 8,
+                        marginBottom: 12,
+                        background: "#232832"
+                      }}
+                    />
+                    <div style={{ fontWeight: 700, fontSize: "1rem", marginBottom: 2, color: "#222831" }}>
+                      {restaurant.name}
+                    </div>
+                    <div style={{ color: "#393e46", fontSize: "0.8rem", marginBottom: 12, display: "flex", alignItems: "center" }}>
+                      <LuMapPin style={{ marginRight: 4 }} />
+                      {restaurant.location}
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 1 }}>
+                      {[...Array(5)].map((_, i) =>
+                        i < restaurant.rating ? (
+                          <FaStar key={i} style={{ color: "#00ADB5", fontSize: "1.1rem" }} />
+                        ) : (
+                          <FaRegStar key={i} style={{ color: "#00ADB5", fontSize: "1.1rem" }} />
+                        )
+                      )}
+                    </div>
+                  </div>
+                </InfoWindow>
+              )}
+            </Marker>
+          );
+        })}
       </GoogleMap>
     </div>
   );
-}
+};
