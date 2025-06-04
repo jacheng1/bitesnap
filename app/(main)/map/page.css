@@ -23,7 +23,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #232832 #1B2027;
+    scrollbar-color: #393e46 #1B2027;
     z-index: 2;
 }
 
@@ -34,12 +34,12 @@
 }
 
 .map-sidebar::-webkit-scrollbar-thumb {
-    background: #232832;
+    background: #393e46;
     border-radius: 8px;
 }
 
 .map-sidebar::-webkit-scrollbar-thumb:hover {
-    background: #393e46;
+    background: #4b515c;
 }
 
 .map-sidebar-header {
