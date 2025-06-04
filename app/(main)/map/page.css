@@ -99,6 +99,93 @@
     color: #B0B0B0;
 }
 
+.map-price-dropdown {
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  background: #232832;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  min-width: 190px;
+  z-index: 10;
+  padding: 0.7rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.map-price-dropdown-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.6rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.05rem;
+  transition: background 0.14s;
+}
+
+.map-price-dropdown-row:hover {
+  background: #393e46;
+}
+
+.map-price-dropdown-dollar {
+  color: #00adb5;
+  font-size: 1.1rem;
+}
+
+.map-price-dropdown-label {
+  margin-left: 0.7rem;
+  color: #b0b0b0;
+  font-size: 0.97rem;
+}
+
+.map-friends-dropdown {
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  background: #232832;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  min-width: 190px;
+  z-index: 10;
+  padding: 0.7rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.map-friends-dropdown-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.05rem;
+  transition: background 0.14s;
+}
+
+.map-friends-dropdown-row:hover {
+  background: #393e46;
+}
+
+.map-friends-dropdown-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #232832;
+}
+
+.map-friends-dropdown-name {
+  color: #b0b0b0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 .map-sidebar-list {
     display: flex;
     flex-direction: column;

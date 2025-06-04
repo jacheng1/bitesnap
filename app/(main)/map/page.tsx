@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import Link from "next/link";
 
@@ -56,6 +56,7 @@ const restaurantRows = [
     cost: 3,
     capsules: ["Vietnamese", "Cafe"],
     link: "/restaurant",
+    reviewedBy: [1, 2, 3],
   },
   {
     id: 2,
@@ -67,6 +68,7 @@ const restaurantRows = [
     cost: 1,
     capsules: ["Korean", "Chicken"],
     link: "/restaurant",
+    reviewedBy: [1, 2],
   },
   {
     id: 3,
@@ -78,6 +80,7 @@ const restaurantRows = [
     cost: 2,
     capsules: ["Taiwanese", "Dessert", "Cafe"],
     link: "/restaurant",
+    reviewedBy: [1, 2],
   },
   {
     id: 4,
@@ -89,6 +92,7 @@ const restaurantRows = [
     cost: 1,
     capsules: ["Burger"],
     link: "/restaurant",
+    reviewedBy: [1, 2, 3, 4],
   },
   {
     id: 5,
@@ -100,6 +104,7 @@ const restaurantRows = [
     cost: 2,
     capsules: ["Lebanese", "Australian", "Chicken"],
     link: "/restaurant-2",
+    reviewedBy: [1],
   },
 ];
 
@@ -111,8 +116,19 @@ const friendProfileImgs = [
   "/Profile_Picture_6.svg",
 ];
 
+const friendList = [
+  { id: 1, name: "Gus G.", img: "/Profile_Picture_2.svg" },
+  { id: 2, name: "Bob R.", img: "/Profile_Picture_3.svg" },
+  { id: 3, name: "Alice T.", img: "/Profile_Picture_4.svg" },
+  { id: 4, name: "Sandy L.", img: "/Profile_Picture_5.svg" },
+  { id: 5, name: "Mike D.", img: "/Profile_Picture_6.svg" },
+];
+
 export default function Map() {
   const [hoveredMarker, setHoveredMarker] = useState<number | null>(null);
+  const [showPriceDropdown, setShowPriceDropdown] = useState(false);
+  const [showFriendsDropdown, setShowFriendsDropdown] = useState(false);
+  const [selectedFriends, setSelectedFriends] = useState<number[]>([]);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
@@ -120,6 +136,53 @@ export default function Map() {
 
   // Add a ref to the map instance
   const mapRef = useRef<google.maps.Map | null>(null);
+
+  // Helper to close dropdown when clicking outside
+  const priceDropdownRef = useRef<HTMLDivElement>(null);
+  const priceCapsuleRef = useRef<HTMLDivElement>(null);
+  const friendsDropdownRef = useRef<HTMLDivElement>(null);
+  const friendsCapsuleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        priceDropdownRef.current &&
+        !priceDropdownRef.current.contains(event.target as Node) &&
+        priceCapsuleRef.current &&
+        !priceCapsuleRef.current.contains(event.target as Node)
+      ) {
+        setShowPriceDropdown(false);
+      }
+
+      if (
+        friendsDropdownRef.current &&
+        !friendsDropdownRef.current.contains(event.target as Node) &&
+        friendsCapsuleRef.current &&
+        !friendsCapsuleRef.current.contains(event.target as Node)
+      ) {
+        setShowFriendsDropdown(false);
+      }
+    }
+    if (showPriceDropdown || showFriendsDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showPriceDropdown, showFriendsDropdown]);
+
+  const filteredRestaurants =
+    selectedFriends.length === 0
+      ? restaurantRows
+      : restaurantRows.filter(r =>
+          r.reviewedBy.some(fid => selectedFriends.includes(fid))
+        );
+
+  // Map markerData to filtered restaurants
+  const filteredMarkerData = filteredRestaurants.map(r => {
+    // Find marker by restaurant name (assuming order matches)
+    return markerData.find(m => m.name === r.name.replace(/^\d+\.\s/, ""));
+  });
 
   // Handler to store map instance
   const onLoad = (map: google.maps.Map) => {
@@ -153,21 +216,79 @@ export default function Map() {
             Filters
             <FaChevronDown className="map-sidebar-capsule-chevron" />
           </div>
-          <div className="map-sidebar-capsule">
+          <div 
+            className="map-sidebar-capsule"
+            ref={priceCapsuleRef}
+            onClick={() => setShowPriceDropdown((prev) => !prev)}
+            style={{ position: "relative" }}
+          >
             <FaDollarSign className="map-sidebar-capsule-icon" />
             Price
             <FaChevronDown className="map-sidebar-capsule-chevron" />
+            {showPriceDropdown && (
+              <div
+                className="map-price-dropdown"
+                ref={priceDropdownRef}
+              >
+                <div className="map-price-dropdown-row">
+                  <FaDollarSign className="map-price-dropdown-dollar" />
+                  <span className="map-price-dropdown-label">$1-10</span>
+                </div>
+                <div className="map-price-dropdown-row">
+                  <FaDollarSign className="map-price-dropdown-dollar" />
+                  <FaDollarSign className="map-price-dropdown-dollar" />
+                  <span className="map-price-dropdown-label">$10-50</span>
+                </div>
+                <div className="map-price-dropdown-row">
+                  <FaDollarSign className="map-price-dropdown-dollar" />
+                  <FaDollarSign className="map-price-dropdown-dollar" />
+                  <FaDollarSign className="map-price-dropdown-dollar" />
+                  <span className="map-price-dropdown-label">$50-100</span>
+                </div>
+              </div>
+            )}
           </div>
-          <div className="map-sidebar-capsule">
+          <div 
+            className="map-sidebar-capsule"
+            ref={friendsCapsuleRef}
+            onClick={() => setShowFriendsDropdown((prev) => !prev)}
+            style={{ position: "relative" }}
+          >
             <IoPeopleSharp className="map-sidebar-capsule-icon" />
             Friends
             <FaChevronDown className="map-sidebar-capsule-chevron" />
+            {showFriendsDropdown && (
+              <div className="map-friends-dropdown" ref={friendsDropdownRef}>
+                {friendList.map(friend => (
+                  <label className="map-friends-dropdown-row" key={friend.id}>
+                    <input
+                      type="checkbox"
+                      checked={selectedFriends.includes(friend.id)}
+                      onChange={() => {
+                        setSelectedFriends(prev =>
+                          prev.includes(friend.id)
+                            ? prev.filter(id => id !== friend.id)
+                            : [...prev, friend.id]
+                        );
+                      }}
+                      style={{ marginRight: 8 }}
+                    />
+                    <img
+                      src={friend.img}
+                      alt={friend.name}
+                      className="map-friends-dropdown-img"
+                    />
+                    <span className="map-friends-dropdown-name">{friend.name}</span>
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Restaurant rows */}
         <div className="map-sidebar-list">
-          {restaurantRows.map((item, idx) => (
+          {filteredRestaurants.map((item, idx) => (
             <div key={item.id}>
               <div 
                 className="map-sidebar-restaurant-row"
@@ -256,7 +377,9 @@ export default function Map() {
         options={{ streetViewControl: false, mapTypeControl: false }}
         onLoad={onLoad}
       >
-        {markerData.map((marker, idx) => {
+        {filteredMarkerData.map(
+          (marker, idx) => 
+            marker && (() => {
           const restaurant = restaurantRows[idx];
           const markerNumber = idx + 1;
           const svg = `
@@ -322,7 +445,8 @@ export default function Map() {
               )}
             </Marker>
           );
-        })}
+        })()
+      )}
       </GoogleMap>
     </div>
   );
