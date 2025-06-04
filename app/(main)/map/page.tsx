@@ -92,7 +92,7 @@ export default function Map() {
         <div className="map-sidebar-header">5 results near Irvine, CA</div>
 
         {/* Horizontal line */}
-        <div className="map-sidebar-divider" />
+        <div className="map-sidebar-divider"></div>
 
         {/* Filter row */}
         <div className="map-sidebar-capsules-row">
