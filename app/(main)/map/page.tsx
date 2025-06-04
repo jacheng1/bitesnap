@@ -2,7 +2,8 @@
 
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 
-import { FaChevronDown, FaFilter, FaDollarSign, FaUtensils } from "react-icons/fa";
+import { IoPeopleSharp } from "react-icons/io5";
+import { FaChevronDown, FaFilter, FaDollarSign, FaStar, FaRegStar } from "react-icons/fa";
 
 import "./page.css";
 
@@ -45,31 +46,49 @@ const restaurantRows = [
     img: "/Food_Card_Picture_1.svg",
     name: "NEP Cafe - Irvine",
     location: "14346 Culver Dr, Irvine, CA",
+    rating: 4,
+    recommendedBy: 3,
   },
   {
     id: 2,
     img: "/Food_Card_Picture_2.svg",
     name: "Yup Dduk Irvine",
     location: "4515a Campus Dr, Irvine, CA",
+    rating: 4,
+    recommendedBy: 2,
   },
   {
     id: 3,
     img: "/Food_Card_Picture_3.svg",
     name: "Ever After Team Room & Eatery",
     location: "18090 Culver Dr, Irvine, CA",
+    rating: 4,
+    recommendedBy: 2,
   },
   {
     id: 4,
     img: "/Food_Card_Picture_4.svg",
     name: "In-N-Out Burger",
     location: "4115 Campus Dr, Irvine, CA",
+    rating: 5,
+    recommendedBy: 4,
   },
   {
     id: 5,
     img: "/Food_Card_Picture_5.svg",
     name: "The Chicken Shop",
     location: "1120 Irvine Ave, Newport Beach, CA",
+    rating: 4,
+    recommendedBy: 1,
   },
+];
+
+const friendProfileImgs = [
+  "/Profile_Picture_2.svg",
+  "/Profile_Picture_3.svg",
+  "/Profile_Picture_4.svg",
+  "/Profile_Picture_5.svg",
+  "/Profile_Picture_6.svg",
 ];
 
 export default function Map() {
@@ -107,8 +126,8 @@ export default function Map() {
             <FaChevronDown className="map-sidebar-capsule-chevron" />
           </div>
           <div className="map-sidebar-capsule">
-            <FaUtensils className="map-sidebar-capsule-icon" />
-            Cuisine
+            <IoPeopleSharp className="map-sidebar-capsule-icon" />
+            Friends
             <FaChevronDown className="map-sidebar-capsule-chevron" />
           </div>
         </div>
@@ -122,6 +141,28 @@ export default function Map() {
                 <div className="map-sidebar-restaurant-info">
                   <div className="map-sidebar-restaurant-name">{item.name}</div>
                   <div className="map-sidebar-restaurant-location">{item.location}</div>
+                  <div className="map-sidebar-restaurant-stars-row">
+                    {[...Array(5)].map((_, i) =>
+                      i < item.rating ? (
+                        <FaStar key={i} className="map-sidebar-star filled" />
+                      ) : (
+                        <FaRegStar key={i} className="map-sidebar-star" />
+                      )
+                    )}
+                    <span className="map-sidebar-recommended-text">
+                      Reviewed by
+                    </span>
+                    <span className="map-sidebar-friends-row">
+                      {[...Array(Math.min(item.recommendedBy, friendProfileImgs.length))].map((_, i) => (
+                        <img
+                          key={i}
+                          src={friendProfileImgs[i]}
+                          alt="Friend"
+                          className="map-sidebar-friend-img"
+                        />
+                      ))}
+                    </span>
+                  </div>
                 </div>
               </div>
               {idx < restaurantRows.length - 1 && (
@@ -132,6 +173,7 @@ export default function Map() {
         </div>
       </div>
 
+      {/* Google Map */}
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

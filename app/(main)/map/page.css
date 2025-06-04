@@ -14,7 +14,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 950px;
+    width: 1250px;
     height: 100vh;
     background: #1B2027;
     box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.07);
@@ -107,7 +107,7 @@
 
 .map-sidebar-restaurant-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.1rem;
     padding: 1.5rem 0;
 }
@@ -125,19 +125,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 0.5rem;
 }
 
 .map-sidebar-restaurant-name {
     color: #fff;
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .map-sidebar-restaurant-location {
     color: #b0b0b0;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 400;
+    margin-bottom: 0.5rem;
 }
 
 .map-sidebar-restaurant-divider {
@@ -145,6 +147,46 @@
     height: 1px;
     background: #232832;
     margin: 0;
+}
+
+.map-sidebar-restaurant-stars-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.map-sidebar-star {
+    color: #FFFFFF;
+    font-size: 1.15rem;
+}
+
+.map-sidebar-star.filled {
+    color: #FFFFFF;
+}
+
+.map-sidebar-recommended-text {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-left: 0.1rem;
+    font-weight: 500;
+}
+
+.map-sidebar-friends-row {
+    display: flex;
+    align-items: center;
+    margin-left: 0.6rem;
+    gap: -0.5rem;
+}
+
+.map-sidebar-friend-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #1B2027;
+    margin-left: -8px;
+    background: #232832;
 }
 
 .google-map-full {
