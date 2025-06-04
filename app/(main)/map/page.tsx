@@ -3,7 +3,8 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 
 import { IoPeopleSharp } from "react-icons/io5";
-import { FaChevronDown, FaFilter, FaDollarSign, FaStar, FaRegStar } from "react-icons/fa";
+import { LuMapPin } from "react-icons/lu";
+import { FaChevronDown, FaFilter, FaDollarSign, FaClock, FaStar, FaRegStar, FaCircle } from "react-icons/fa";
 
 import "./page.css";
 
@@ -48,6 +49,7 @@ const restaurantRows = [
     location: "14346 Culver Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 3,
+    cost: 3,
   },
   {
     id: 2,
@@ -56,6 +58,7 @@ const restaurantRows = [
     location: "4515a Campus Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 2,
+    cost: 1,
   },
   {
     id: 3,
@@ -64,6 +67,7 @@ const restaurantRows = [
     location: "18090 Culver Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 2,
+    cost: 2,
   },
   {
     id: 4,
@@ -72,6 +76,7 @@ const restaurantRows = [
     location: "4115 Campus Dr, Irvine, CA",
     rating: 5,
     recommendedBy: 4,
+    cost: 1,
   },
   {
     id: 5,
@@ -80,6 +85,7 @@ const restaurantRows = [
     location: "1120 Irvine Ave, Newport Beach, CA",
     rating: 4,
     recommendedBy: 1,
+    cost: 2,
   },
 ];
 
@@ -140,7 +146,14 @@ export default function Map() {
                 <img src={item.img} alt={item.name} className="map-sidebar-restaurant-img" />
                 <div className="map-sidebar-restaurant-info">
                   <div className="map-sidebar-restaurant-name">{item.name}</div>
-                  <div className="map-sidebar-restaurant-location">{item.location}</div>
+                  <div className="map-sidebar-restaurant-location">
+                    <LuMapPin className="map-sidebar-location-icon" />
+                    {item.location}
+                  </div>
+                  <div className="map-sidebar-restaurant-hours-row">
+                  <FaClock className="map-sidebar-hours-icon" />
+                  <span className="map-sidebar-hours-text">11:00 AM - 9:00 PM</span>
+                </div>
                   <div className="map-sidebar-restaurant-stars-row">
                     {[...Array(5)].map((_, i) =>
                       i < item.rating ? (
@@ -161,6 +174,21 @@ export default function Map() {
                           className="map-sidebar-friend-img"
                         />
                       ))}
+                    </span>
+                  </div>
+                  <div className="map-sidebar-restaurant-cost-row">
+                    {[...Array(3)].map((_, i) =>
+                      i < item.cost ? (
+                        <FaDollarSign key={i} className="map-sidebar-dollar filled" />
+                      ) : (
+                        <FaDollarSign key={i} className="map-sidebar-dollar" />
+                      )
+                    )}
+                    <FaCircle className="map-sidebar-cost-period" />
+                    <span className="map-sidebar-cost-text">
+                      {item.cost === 1 && "$1-10"}
+                      {item.cost === 2 && "$10-50"}
+                      {item.cost === 3 && "$50-100"}
                     </span>
                   </div>
                 </div>
