@@ -49,6 +49,7 @@ const locationSuggestions = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
     const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
     const [locationInput, setLocationInput] = useState("");
     const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -147,14 +148,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             type="text"
                             className="main-navbar-search"
                             placeholder="Things to eat, bars to visit..."
+                            value={searchInput}
                             onFocus={() => setDropdownOpen(true)}
+                            onChange={e => setSearchInput(e.target.value)}
                             ref={searchRef}
                             autoComplete="off"
                           />
                           {dropdownOpen && (
                             <div className="main-navbar-search-dropdown" ref={dropdownRef}>
                               {dropdownSuggestions.map((item) => (
-                                <div className="main-navbar-search-row" key={item.id}>
+                                <div 
+                                  className="main-navbar-search-row" 
+                                  key={item.id}
+                                  onClick={() => {
+                                    setSearchInput(item.name);
+                                    setDropdownOpen(false);
+
+                                    router.push("/map");
+                                  }}
+                                >
                                   <Image
                                     src={item.img}
                                     alt={item.name}
@@ -202,6 +214,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     onClick={() => {
                                       setLocationInput(loc.name);
                                       setLocationDropdownOpen(false);
+
+                                      router.push("/map");
                                     }}
                                   >
                                     <div className="main-navbar-search-info">
@@ -234,12 +248,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                           Find a Restaurant
                         </button>
 
-                        {/* Write a Review button */}
+                        {/* Create a Review button */}
                         <button 
                           className="main-navbar-action-btn"
                           onClick={() => router.push("/review")}
                         >
-                          Write a Review
+                          Create a Review
                         </button>
 
                         {/* Notifications button */}
@@ -309,7 +323,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </div>
               <div className="footer-col">
                 <div className="footer-title">Explore</div>
-                <div className="footer-link">Write a Review</div>
+                <div className="footer-link">Create a Review</div>
                 <div className="footer-link">Add a Restaurant</div>
                 <div className="footer-link">Join</div>
                 <div className="footer-link">Help Center</div>

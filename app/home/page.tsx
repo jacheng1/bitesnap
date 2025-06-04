@@ -140,6 +140,7 @@ export default function Home() {
   const [next, setNext] = useState<number | null>(null);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
   const [locationInput, setLocationInput] = useState("");
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -342,14 +343,25 @@ export default function Home() {
                 type="text"
                 className="header-search"
                 placeholder="Things to eat, bars to visit..."
+                value={searchInput}
                 onFocus={() => setDropdownOpen(true)}
+                onChange={e => setSearchInput(e.target.value)}
                 ref={searchRef}
                 autoComplete="off"
               />
               {dropdownOpen && (
                 <div className="header-search-dropdown" ref={dropdownRef}>
                   {dropdownSuggestions.map((item) => (
-                    <div className="header-search-row" key={item.id}>
+                    <div 
+                      className="header-search-row" 
+                      key={item.id}
+                      onClick={() => {
+                        setSearchInput(item.name);
+                        setDropdownOpen(false);
+
+                        router.push("/map");
+                      }}
+                    >
                       <Image
                         src={item.img}
                         alt={item.name}
@@ -399,6 +411,8 @@ export default function Home() {
                       onClick={() => {
                         setLocationInput(loc.name);
                         setLocationDropdownOpen(false);
+
+                        router.push("/map");
                       }}
                     >
                       <div className="header-search-info">
@@ -426,12 +440,12 @@ export default function Home() {
             Find a Restaurant
           </button>
 
-          {/* Write a Review button */}
+          {/* Create a Review button */}
           <button 
             className="header-action-btn write-review-btn"
             onClick={() => router.push("/review")}
           >
-            Write a Review
+            Create a Review
           </button>
 
           {/* Notifications button */}
@@ -680,7 +694,7 @@ export default function Home() {
         </div>
         <div className="footer-col">
           <div className="footer-title">Explore</div>
-          <div className="footer-link">Write a Review</div>
+          <div className="footer-link">Create a Review</div>
           <div className="footer-link">Add a Restaurant</div>
           <div className="footer-link">Join</div>
           <div className="footer-link">Help Center</div>
