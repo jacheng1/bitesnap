@@ -26,7 +26,7 @@ const dropdownSuggestions = [
   {
     id: 3,
     img: "/Food_Card_Picture_3.svg",
-    name: "Ever After Team Room & Eatery",
+    name: "Ever After Tea Room & Eatery",
     location: "18090 Culver Dr, Irvine, CA",
   },
   {

@@ -18,7 +18,7 @@ const markerData = [
     position: { lat: 33.6492967, lng: -117.8322873 },
   },
   {
-    name: "Ever After Team Room & Eatery",
+    name: "Ever After Tea Room & Eatery",
     position: { lat: 33.6637378, lng: -117.8259535 },
   },
   {
@@ -50,6 +50,7 @@ const restaurantRows = [
     rating: 4,
     recommendedBy: 3,
     cost: 3,
+    capsules: ["Cafe", "Vietnamese"],
   },
   {
     id: 2,
@@ -59,15 +60,17 @@ const restaurantRows = [
     rating: 4,
     recommendedBy: 2,
     cost: 1,
+    capsules: ["Korean", "Chicken Shop"],
   },
   {
     id: 3,
     img: "/Food_Card_Picture_3.svg",
-    name: "Ever After Team Room & Eatery",
+    name: "Ever After Tea Room & Eatery",
     location: "18090 Culver Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 2,
     cost: 2,
+    capsules: ["Taiwanese", "Dessert", "Cafe"],
   },
   {
     id: 4,
@@ -77,6 +80,7 @@ const restaurantRows = [
     rating: 5,
     recommendedBy: 4,
     cost: 1,
+    capsules: ["Burger"],
   },
   {
     id: 5,
@@ -86,6 +90,7 @@ const restaurantRows = [
     rating: 4,
     recommendedBy: 1,
     cost: 2,
+    capsules: ["Chicken Shop", "Australian"],
   },
 ];
 
@@ -190,6 +195,13 @@ export default function Map() {
                       {item.cost === 2 && "$10-50"}
                       {item.cost === 3 && "$50-100"}
                     </span>
+                  </div>
+                  <div className="map-sidebar-restaurant-capsules-row">
+                    {item.capsules.map((text, i) => (
+                      <span key={i} className="map-sidebar-restaurant-capsule">
+                        {text}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
