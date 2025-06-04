@@ -604,7 +604,7 @@ export default function Home() {
 
         {/* Row of two food cards */}
         <div className="for-you-food-cards-row" style={{ marginTop: "0.5rem" }}>
-          <Link  href="/restaurant" className="for-you-food-card for-you-food-card-mid" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/restaurant" className="for-you-food-card for-you-food-card-mid" style={{ textDecoration: "none", color: "inherit" }}>
             <CardUserBox
               img="/Profile_Picture_5.svg"
               name="Sandy L."
@@ -641,34 +641,42 @@ export default function Home() {
             </div>
           </Link>
           <div className="for-you-food-card for-you-food-card-mid">
-            <CardUserBox
-              img="/Profile_Picture_6.svg"
-              name="Mike D."
-              text="7 hours ago"
-            />
-            <Image
-              src="/Food_Card_Picture_5.svg"
-              alt="The Chicken Shop"
-              width={340}
-              height={100}
-              className="for-you-food-img"
-              style={{ objectFit: "cover", borderRadius: "16px" }}
-            />
-            <div className="for-you-food-caption">
-              <div className="for-you-food-restaurant">The Chicken Shop</div>
-              <div className="for-you-food-dish">OG Wrap</div>
-              <div className="for-you-food-rating">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaRegStar />
-                <span className="for-you-food-rating-actions">
-                  <FoodRatingWithThumbs />
-                  <MdChatBubbleOutline className="for-you-food-comment" />
-                </span>
+            <Link href="/restaurant-2" style={{ textDecoration: "none", color: "inherit" }}>
+              <CardUserBox
+                img="/Profile_Picture_6.svg"
+                name="Mike D."
+                text="7 hours ago"
+              />
+              <Image
+                src="/Food_Card_Picture_5.svg"
+                alt="The Chicken Shop"
+                width={340}
+                height={100}
+                className="for-you-food-img"
+                style={{ objectFit: "cover", borderRadius: "16px" }}
+              />
+              <div className="for-you-food-caption">
+                <div className="for-you-food-restaurant">The Chicken Shop</div>
+                <div className="for-you-food-dish">OG Wrap</div>
+                <div className="for-you-food-rating">
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaRegStar />
+                  <span className="for-you-food-rating-actions">
+                    <FoodRatingWithThumbs />
+                    <MdChatBubbleOutline 
+                      className="for-you-food-comment" 
+                      onClick={e => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                      }}
+                    />
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 

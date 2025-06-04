@@ -145,6 +145,10 @@
     margin-bottom: 0.5rem;
 }
 
+.map-sidebar-restaurant-name:hover {
+    text-decoration: underline;
+}
+
 .map-sidebar-restaurant-location {
     color: #b0b0b0;
     font-size: 0.8rem;
@@ -217,9 +221,9 @@
     height: 28px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #1B2027;
+    border: none;
     margin-left: -8px;
-    background: #232832;
+    background: none;
 }
 
 .map-sidebar-restaurant-cost-row {
@@ -254,7 +258,7 @@
 .map-sidebar-restaurant-capsules-row {
     display: flex;
     gap: 0.6rem;
-    margin: 1.85rem 0 0.2rem 0;
+    margin: 2.1rem 0 0.2rem 0;
 }
 
 .map-sidebar-restaurant-capsule {
@@ -264,7 +268,7 @@
     color: #FFFFFF;
     border-radius: 999px;
     padding: 0.5rem 1rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
     border: none;
     outline: none;

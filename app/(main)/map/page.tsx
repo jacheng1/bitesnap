@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react";
 
+import Link from "next/link";
+
 import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
 
 import { IoPeopleSharp } from "react-icons/io5";
@@ -53,6 +55,7 @@ const restaurantRows = [
     recommendedBy: 3,
     cost: 3,
     capsules: ["Vietnamese", "Cafe"],
+    link: "/restaurant",
   },
   {
     id: 2,
@@ -63,6 +66,7 @@ const restaurantRows = [
     recommendedBy: 2,
     cost: 1,
     capsules: ["Korean", "Chicken"],
+    link: "/restaurant",
   },
   {
     id: 3,
@@ -73,6 +77,7 @@ const restaurantRows = [
     recommendedBy: 2,
     cost: 2,
     capsules: ["Taiwanese", "Dessert", "Cafe"],
+    link: "/restaurant",
   },
   {
     id: 4,
@@ -83,6 +88,7 @@ const restaurantRows = [
     recommendedBy: 4,
     cost: 1,
     capsules: ["Burger"],
+    link: "/restaurant",
   },
   {
     id: 5,
@@ -93,6 +99,7 @@ const restaurantRows = [
     recommendedBy: 1,
     cost: 2,
     capsules: ["Lebanese", "Australian", "Chicken"],
+    link: "/restaurant-2",
   },
 ];
 
@@ -174,7 +181,11 @@ export default function Map() {
               >
                 <img src={item.img} alt={item.name} className="map-sidebar-restaurant-img" />
                 <div className="map-sidebar-restaurant-info">
-                  <div className="map-sidebar-restaurant-name">{item.name}</div>
+                  <div className="map-sidebar-restaurant-name">
+                    <Link href={item.link} style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                      {item.name}
+                    </Link>
+                  </div>
                   <div className="map-sidebar-restaurant-location">
                     <LuMapPin className="map-sidebar-location-icon" />
                     {item.location}

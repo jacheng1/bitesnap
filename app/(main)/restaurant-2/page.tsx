@@ -8,7 +8,7 @@ import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 import "./page.css";
 
-export default function Restaurant() {
+export default function Restaurant2() {
   useEffect(() => {
     const $ = (str: string) => document.querySelector(str);
 
@@ -207,10 +207,10 @@ export default function Restaurant() {
       <div className="restaurant-page-header-row">
         <div>
           <div className="restaurant-page-header">
-            In-N-Out Burger
+            The Chicken Shop
             
             <div className="restaurant-page-subheader">
-              Irvine, California
+              Newport Beach, California
             </div>
           </div>
         </div>
@@ -228,45 +228,49 @@ export default function Restaurant() {
       
       <div id="carousel" className="carousel">
         <div id='item_1' className="hideLeft">
-          <img src="/Restaurant_Food_Photo_1.svg" />
+          <img src="/Restaurant_Food_Photo_9.svg" />
         </div>
 
         <div id='item_2' className="prevLeftSecond">
-          <img src="/Restaurant_Food_Photo_2.svg" />
+          <img src="/Restaurant_Food_Photo_10.svg" />
         </div>
 
         <div id='item_3' className="prev">
-          <img src="/Restaurant_Food_Photo_3.svg" />
+          <img src="/Restaurant_Food_Photo_11.svg" />
         </div>
 
         <div id='item_4' className="selected">
-          <img src="/Restaurant_Food_Photo_4.svg" />
+          <img src="/Restaurant_Food_Photo_16.svg" />
         </div>
 
         <div id='item_5' className="next">
-          <img src="/Restaurant_Food_Photo_5.svg" />
+          <img src="/Restaurant_Food_Photo_13.svg" />
         </div>
 
         <div id='item_6' className="nextRightSecond">
-          <img src="/Restaurant_Food_Photo_6.svg" />
+          <img src="/Restaurant_Food_Photo_14.svg" />
         </div>
 
         <div id='item_7' className="hideRight">
-          <img src="/Restaurant_Food_Photo_7.svg" />
+          <img src="/Restaurant_Food_Photo_15.svg" />
         </div>
 
         <div id='item_8' className="hideRight">
-          <img src="/Restaurant_Food_Photo_8.svg" />
+          <img src="/Restaurant_Food_Photo_12.svg" />
         </div>
       </div>
 
       {/* Description and action buttons */}
       <div className="restaurant-page-desc-row">
         <div className="restaurant-page-desc">
-          Classic burger chain serving customizable burgers, hand-cut fries & shakes.
+          Chickens are slow-roasted on the rotisserie using South American 
+          <br />
+          Quebracho Blanco hardwood, an unparalleled charcoal that brings 
+          <br />
+          out a natural smoke flavor while withstanding exceptionally high heat.
         </div>
         <div className="restaurant-page-desc-actions">
-          <Link href="https://www.in-n-out.com/menu" passHref target="_blank">
+          <Link href="https://www.thechickenshopoc.com/" passHref target="_blank">
             <button className="restaurant-page-desc-btn">View Menu</button>
           </Link>
           <button className="restaurant-page-desc-btn">Snap a Pic</button>
@@ -276,24 +280,24 @@ export default function Restaurant() {
       {/* Stats/info row below description */}
       <div className="restaurant-page-info-row">
         <div className="restaurant-page-info-col">
-          <span className="restaurant-page-info-main"><span>89%</span> of your friends</span>
+          <span className="restaurant-page-info-main"><span>74%</span> of your friends</span>
           <span className="restaurant-page-info-sub">came back for more</span>
         </div>
 
         <div className="restaurant-page-info-col">
-          <span className="restaurant-page-info-main"><span>2.5x</span> more popular</span>
-          <span className="restaurant-page-info-sub">after midnight</span>
+          <span className="restaurant-page-info-main"><span>2x</span> more popular</span>
+          <span className="restaurant-page-info-sub">during the afternoon</span>
         </div>
 
         <div className="restaurant-page-info-col">
           <span className="restaurant-page-info-right-main">
             <FaMapMarkerAlt className="restaurant-page-info-icon" size={25} />
-            Still open if you leave within 10 minutes
+            Still open if you leave within 60 minutes
           </span>
 
           <span className="restaurant-page-info-right-sub">
             <FaClock className="restaurant-page-info-icon" size={25} />
-            Estimated 6-9 minute wait
+            Estimated 15 minute wait
           </span>
         </div>
       </div>
@@ -302,7 +306,7 @@ export default function Restaurant() {
       <div className="restaurant-page-friends-row">
         <div className="restaurant-page-friend-box">
           <div className="restaurant-page-friend-text">
-            “Best burger spot in Irvine! Always fresh and quick.”
+            “Their chicken was juicy and flavorful - their use of charcoal really came through!”
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Sandy L.</span>
@@ -315,26 +319,26 @@ export default function Restaurant() {
         </div>
         <div className="restaurant-page-friend-box">
           <div className="restaurant-page-friend-text">
-            “Love the late-night fries and shakes. Highly recommend!”
+            “You gotta get the OG Wrap.”
           </div>
           <div className="restaurant-page-friend-profile">
-            <span className="restaurant-page-friend-name">Bob R.</span>
+            <span className="restaurant-page-friend-name">Mike D.</span>
             <img
-              src="/Profile_Picture_3.svg"
-              alt="Bob R."
+              src="/Profile_Picture_6.svg"
+              alt="Mike D."
               className="restaurant-page-friend-img"
             />
           </div>
         </div>
         <div className="restaurant-page-friend-box">
           <div className="restaurant-page-friend-text">
-            “Great place to hang out with friends after midnight.”
+            “The rotisserie chicken here is amazing! No wonder so many people line for it!”
           </div>
           <div className="restaurant-page-friend-profile">
-            <span className="restaurant-page-friend-name">Alice T.</span>
+            <span className="restaurant-page-friend-name">Gus G.</span>
             <img
-              src="/Profile_Picture_4.svg"
-              alt="Alice T."
+              src="/Profile_Picture_2.svg"
+              alt="Gus G."
               className="restaurant-page-friend-img"
             />
           </div>
