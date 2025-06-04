@@ -46,6 +46,7 @@ export default function Review() {
   const [restaurantDropdownOpen, setRestaurantDropdownOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState<number | null>(null);
   const [selectedRating, setSelectedRating] = useState<number>(0);
+  const [uploadedImgs, setUploadedImgs] = useState<string[]>([]);
 
   const restaurantRef = useRef<HTMLInputElement>(null);
   const restaurantDropdownRef = useRef<HTMLDivElement>(null);
@@ -71,6 +72,22 @@ export default function Review() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [restaurantDropdownOpen]);
+
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          setUploadedImgs(prev => [...prev, ev.target?.result as string]);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      
+      e.target.value = "";
+    }
+  }
 
   return (
     <div className="review-dropdown-container">
@@ -165,7 +182,7 @@ export default function Review() {
                     {selectedRating === 5 && "Must-try!"}
                 </div>
                 <div className="review-guidelines-text">
-                    Read our review guidelines
+                    BiteSnap&apos;s review guidelines
                 </div>
             </div>
             <textarea
@@ -173,6 +190,32 @@ export default function Review() {
                 placeholder="Write your review..."
                 rows={4}
             />
+            <div className="review-add-pics-label">Add photos</div>
+            <div className="review-add-pics-box">
+              <label className="review-add-pics-upload">
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleImageChange}
+                />
+                <span className="review-add-pics-btn">Upload Photo</span>
+              </label>
+              {uploadedImgs.length > 0 && (
+                <div className="review-add-pics-preview" style={{ display: "flex", gap: "1rem" }}>
+                  {uploadedImgs.map((img, idx) => (
+                    <Image
+                      key={idx}
+                      src={img}
+                      alt={`Uploaded ${idx + 1}`}
+                      width={120}
+                      height={120}
+                      style={{ objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

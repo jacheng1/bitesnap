@@ -1,5 +1,5 @@
 .review-dropdown-container {
-  max-width: 400px;
+  max-width: 500px;
   margin-top: 3rem;
   margin-left: 5.5rem;
   margin-bottom: 15rem;
@@ -132,10 +132,10 @@
 }
 
 .review-guidelines-text {
-    color: #B0B0B0;
+    color: #00ADB5;
     font-size: 0.9rem;
     margin-top: 0.3rem;
-    margin-left: 13rem;
+    margin-left: 18.5rem;
     cursor: pointer;
 }
 
@@ -153,12 +153,62 @@
   font-size: 1rem;
   padding: 0.9rem 1rem;
   resize: none;
-  min-height: 250px;
-  min-width: 650px;
+  min-height: 325px;
+  min-width: 750px;
   box-sizing: border-box;
 }
 
 .review-dropdown-commentbox:focus {
   outline: 1px solid #00ADB5;
   outline-offset: 2px;
+}
+
+.review-add-pics-label {
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  margin-left: 0.1rem;
+}
+
+.review-add-pics-box {
+  background: #222832;
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.review-add-pics-upload {
+  cursor: pointer;
+}
+
+.review-add-pics-btn {
+  background: #232832;
+  color: #00adb5;
+  border: 1px solid #00adb5;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: inline-block;
+}
+
+.review-add-pics-btn:hover {
+  background: #00adb5;
+  color: #fff;
+}
+
+.review-add-pics-preview img,
+.review-add-pics-preview Image {
+  border-radius: 8px;
+  object-fit: cover;
+  max-width: 120px;
+  max-height: 120px;
+  display: block;
 }
