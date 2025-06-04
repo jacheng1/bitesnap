@@ -247,6 +247,16 @@ export default function Map() {
       >
         {markerData.map((marker, idx) => {
           const restaurant = restaurantRows[idx];
+          const markerNumber = idx + 1;
+          const svg = `
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <filter id="shadow" x="0" y="0" width="50" height="50">
+                <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25" />
+              </filter>
+              <circle cx="20" cy="20" r="18" fill="#00adb5" stroke="#FFFFFF" stroke-width="3" />
+              <text x="20" y="26" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold" fill="#fff">${markerNumber}</text>
+            </svg>
+          `;
           return (
             <Marker
               key={marker.name}
@@ -254,6 +264,11 @@ export default function Map() {
               title={marker.name}
               onMouseOver={() => setHoveredMarker(idx)}
               onMouseOut={() => setHoveredMarker(null)}
+              icon={{
+                url: "data:image/svg+xml;utf-8," + encodeURIComponent(svg),
+                scaledSize: new window.google.maps.Size(30, 30),
+                labelOrigin: new window.google.maps.Point(20, 20)
+              }}
             >
               {hoveredMarker === idx && (
                 <InfoWindow
