@@ -1,0 +1,164 @@
+.review-dropdown-container {
+  max-width: 400px;
+  margin-top: 3rem;
+  margin-left: 5.5rem;
+  margin-bottom: 15rem;
+}
+
+.review-dropdown-label {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #00ADB5;
+}
+
+.review-searchbar,
+.review-location-searchbar {
+  width: 100%;
+  height: 40px;
+  background: #232832;
+  border: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.review-searchbar-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ADB5;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.review-search-dropdown,
+.review-location-search-dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background: #232832;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.review-search-row {
+  display: flex;
+  align-items: flex-start;
+  margin: 0.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.review-search-row:hover {
+  background: #393e46;
+}
+
+.review-search-food-img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 1rem;
+}
+
+.review-search-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-search-restaurant {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.review-search-restaurant-location,
+.review-search-location {
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  margin-top: 0.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.review-dropdown-selected {
+  display: flex;
+  align-items: center;
+  margin-top: 3.5rem;
+  gap: 1rem;
+}
+
+.review-dropdown-selected-name {
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.review-dropdown-stars {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.review-dropdown-star {
+  color: #00ADB5;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+
+.review-dropdown-star:hover,
+.review-dropdown-star:focus {
+  transform: scale(1.15);
+}
+
+.review-dropdown-text {
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    margin-left: 0.4rem;
+}
+
+.review-guidelines-text {
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    margin-left: 13rem;
+    cursor: pointer;
+}
+
+.review-guidelines-text:hover {
+    text-decoration: underline;
+}
+
+.review-dropdown-commentbox {
+  width: 100%;
+  margin-top: 1.1rem;
+  background: #222832;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.9rem 1rem;
+  resize: none;
+  min-height: 250px;
+  min-width: 650px;
+  box-sizing: border-box;
+}
+
+.review-dropdown-commentbox:focus {
+  outline: 1px solid #00ADB5;
+  outline-offset: 2px;
+}
