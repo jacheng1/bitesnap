@@ -2,7 +2,7 @@
   max-width: 500px;
   margin-top: 3rem;
   margin-left: 5.5rem;
-  margin-bottom: 15rem;
+  margin-bottom: 11rem;
 }
 
 .review-dropdown-label {
@@ -132,10 +132,11 @@
 }
 
 .review-guidelines-text {
+    position: absolute;
     color: #00ADB5;
     font-size: 0.9rem;
     margin-top: 0.3rem;
-    margin-left: 18.5rem;
+    margin-left: 35.5rem;
     cursor: pointer;
 }
 
@@ -166,7 +167,7 @@
 .review-add-pics-label {
   color: #FFFFFF;
   font-size: 1.3rem;
-  margin-top: 1.3rem;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
   margin-left: 0.1rem;
@@ -211,4 +212,111 @@
   max-width: 120px;
   max-height: 120px;
   display: block;
+}
+
+.review-tag-friends-label {
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-left: 0.1rem;
+}
+
+.review-tag-friends-box {
+  background: #222832;
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.review-tag-friend-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.review-tag-friend-row input[type="checkbox"] {
+  accent-color: #00adb5;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-right: 0.7rem;
+}
+
+.review-tag-friend-img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 36px;
+  height: 36px;
+}
+
+.review-tag-friend-status-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 80px;
+}
+
+.review-tag-friend-status-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.1rem;
+  gap: 0.4rem;
+}
+
+.review-tag-friend-status-circle {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+  background: #b0b0b0;
+}
+
+.review-tag-friend-status-circle.online {
+  background: #27c93f;
+}
+
+.review-tag-friend-status-circle.offline {
+  background: #e53935;
+}
+
+.review-tag-friend-status-text {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  font-weight: 500;
+  margin-right: 0.2rem;
+}
+
+.review-tag-friend-name {
+    color: #FFFFFF;
+    font-size: 0.9rem;
+}
+
+.review-post-btn {
+  width: 25%;
+  margin-top: 1.5rem;
+  background: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.9rem 2.5rem 0.9rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.18s;
+  letter-spacing: 0.03em;
+}
+
+.review-post-btn:hover,
+.review-post-btn:focus {
+  background: #019ca3;
 }

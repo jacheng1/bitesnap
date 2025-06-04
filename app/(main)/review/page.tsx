@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
+import Link from "next/link";
 import Image from "next/image";
 
 import { FaSearch, FaStar, FaRegStar } from "react-icons/fa";
@@ -41,12 +42,21 @@ const dropdownSuggestions = [
   },
 ];
 
+const friendSuggestions = [
+  { id: 1, name: "Gus G.", img: "/Profile_Picture_2.svg", online: true },
+  { id: 2, name: "Bob R.", img: "/Profile_Picture_3.svg", online: false },
+  { id: 3, name: "Alice T.", img: "/Profile_Picture_4.svg", online: true },
+  { id: 4, name: "Sandy L.", img: "/Profile_Picture_5.svg", online: false },
+  { id: 5, name: "Mike D.", img: "/Profile_Picture_6.svg", online: true },
+];
+
 export default function Review() {
   const [restaurantInput, setRestaurantInput] = useState("");
   const [restaurantDropdownOpen, setRestaurantDropdownOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState<number | null>(null);
   const [selectedRating, setSelectedRating] = useState<number>(0);
   const [uploadedImgs, setUploadedImgs] = useState<string[]>([]);
+  const [selectedFriends, setSelectedFriends] = useState<number[]>([]);
 
   const restaurantRef = useRef<HTMLInputElement>(null);
   const restaurantDropdownRef = useRef<HTMLDivElement>(null);
@@ -87,6 +97,14 @@ export default function Review() {
       
       e.target.value = "";
     }
+  }
+
+  function handleFriendToggle(id: number) {
+    setSelectedFriends(prev =>
+      prev.includes(id)
+        ? prev.filter(fid => fid !== id)
+        : [...prev, id]
+    );
   }
 
   return (
@@ -216,6 +234,43 @@ export default function Review() {
                 </div>
               )}
             </div>
+            <div className="review-tag-friends-label">Tag your friends</div>
+            <div className="review-tag-friends-box">
+              {friendSuggestions.map(friend => (
+                <label key={friend.id} className="review-tag-friend-row">
+                  <input
+                    type="checkbox"
+                    checked={selectedFriends.includes(friend.id)}
+                    onChange={() => handleFriendToggle(friend.id)}
+                  />
+                  <Image
+                    src={friend.img}
+                    alt={friend.name}
+                    width={36}
+                    height={36}
+                    className="review-tag-friend-img"
+                  />
+                  <div className="review-tag-friend-status-col">
+                    <div className="review-tag-friend-status-row">
+                    <span
+                        className={`review-tag-friend-status-circle ${
+                        friend.online ? "online" : "offline"
+                        }`}
+                    />
+                    <span className="review-tag-friend-status-text">
+                        {friend.online ? "Online" : "Offline"}
+                    </span>
+                    </div>
+                    <span className="review-tag-friend-name">{friend.name}</span>
+                </div>
+                </label>
+              ))}
+            </div>
+            
+            {/* Add Post Review button here */}
+            <Link href="/home">
+                <button className="review-post-btn">Post Review</button>
+            </Link>
           </div>
         </div>
       )}
