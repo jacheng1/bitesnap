@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
 
@@ -47,7 +47,7 @@ const restaurantRows = [
   {
     id: 1,
     img: "/Food_Card_Picture_1.svg",
-    name: "NEP Cafe - Irvine",
+    name: "1. NEP Cafe - Irvine",
     location: "14346 Culver Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 3,
@@ -57,7 +57,7 @@ const restaurantRows = [
   {
     id: 2,
     img: "/Food_Card_Picture_2.svg",
-    name: "Yup Dduk Irvine",
+    name: "2. Yup Dduk Irvine",
     location: "4515a Campus Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 2,
@@ -67,7 +67,7 @@ const restaurantRows = [
   {
     id: 3,
     img: "/Food_Card_Picture_3.svg",
-    name: "Ever After Tea Room & Eatery",
+    name: "3. Ever After Tea Room & Eatery",
     location: "18090 Culver Dr, Irvine, CA",
     rating: 4,
     recommendedBy: 2,
@@ -77,7 +77,7 @@ const restaurantRows = [
   {
     id: 4,
     img: "/Food_Card_Picture_4.svg",
-    name: "In-N-Out Burger",
+    name: "4. In-N-Out Burger",
     location: "4115 Campus Dr, Irvine, CA",
     rating: 5,
     recommendedBy: 4,
@@ -87,7 +87,7 @@ const restaurantRows = [
   {
     id: 5,
     img: "/Food_Card_Picture_5.svg",
-    name: "The Chicken Shop",
+    name: "5. The Chicken Shop",
     location: "1120 Irvine Ave, Newport Beach, CA",
     rating: 4,
     recommendedBy: 1,
@@ -111,14 +111,22 @@ export default function Map() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
 
+  // Add a ref to the map instance
+  const mapRef = useRef<google.maps.Map | null>(null);
+
+  // Handler to store map instance
+  const onLoad = (map: google.maps.Map) => {
+    mapRef.current = map;
+  };
+
   if (!isLoaded) {
     return (
       <div>Loading...</div>
     );
   }
 
-  // Helper to get restaurant by marker index
-  const getRestaurantByMarker = (idx: number) => restaurantRows[idx];
+  // Helper to get marker position by restaurant index
+  const getMarkerPosition = (idx: number) => markerData[idx].position;
 
   return (
     <div className="map-page-container">
@@ -154,7 +162,16 @@ export default function Map() {
         <div className="map-sidebar-list">
           {restaurantRows.map((item, idx) => (
             <div key={item.id}>
-              <div className="map-sidebar-restaurant-row">
+              <div 
+                className="map-sidebar-restaurant-row"
+                onClick={() => {
+                  const pos = getMarkerPosition(idx);
+                  if (mapRef.current && pos) {
+                    mapRef.current.panTo(pos);
+                  }
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <img src={item.img} alt={item.name} className="map-sidebar-restaurant-img" />
                 <div className="map-sidebar-restaurant-info">
                   <div className="map-sidebar-restaurant-name">{item.name}</div>
@@ -226,6 +243,7 @@ export default function Map() {
         center={center}
         zoom={12}
         options={{ streetViewControl: false, mapTypeControl: false }}
+        onLoad={onLoad}
       >
         {markerData.map((marker, idx) => {
           const restaurant = restaurantRows[idx];
