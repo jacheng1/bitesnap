@@ -37,7 +37,7 @@ export default function Restaurant2() {
         const childcnt = carousel.children.length;
         const childs = carousel.children;
         for (let j = 0; j < childcnt; j++) {
-          childs[j].dataset.pos = j;
+          (childs[j] as HTMLElement).dataset.pos = j.toString();
         }
       },
       move: function(el) {
@@ -63,7 +63,7 @@ export default function Restaurant2() {
             const carousel = $("#carousel");
             if (carousel) {
               if (el) {
-                el.dataset.pos = carousel.children.length;
+                (el as HTMLElement).dataset.pos = carousel.children.length.toString();
               }
               const carouselElem = $('#carousel');
               if (carouselElem && el) {
@@ -72,7 +72,7 @@ export default function Restaurant2() {
             }
           } else {
             if (el) {
-              el.dataset.pos = 0;
+              (el as HTMLElement).dataset.pos = "0";
               const carouselElem = $('#carousel');
               if (carouselElem) {
                 carouselElem.prepend(el);
