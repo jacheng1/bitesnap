@@ -41,16 +41,20 @@ export default function Restaurant2() {
           (childs[j] as HTMLElement).dataset.pos = j.toString();
         }
       },
-      move: function(el) {
+      move: function(el: Element | string) {
         let selected = el;
         if (typeof el === "string") {
-          selected = (el === "next")
-            ? ($(".selected" ) && $(".selected")!.nextElementSibling ? $(".selected")!.nextElementSibling : null)
-            : ($(".selected") && $(".selected")!.previousElementSibling ? $(".selected")!.previousElementSibling : null);
+          if (el === "next") {
+            const current = $(".selected");
+            selected = (current && current.nextElementSibling) ? current.nextElementSibling : (current as Element);
+          } else {
+            const current = $(".selected");
+            selected = (current && current.previousElementSibling) ? current.previousElementSibling : (current as Element);
+          }
         }
 
-        const curpos = parseInt(app.selected.dataset.pos);
-        const tgtpos = parseInt(selected.dataset.pos);
+        const curpos = parseInt((app.selected as HTMLElement).dataset.pos ?? "0");
+        const tgtpos = typeof selected !== "string" ? parseInt((selected as HTMLElement).dataset.pos ?? "0") : 0;
         const cnt = curpos - tgtpos;
         const dir = (cnt < 0) ? -1 : 1;
         const shift = Math.abs(cnt);
@@ -85,13 +89,15 @@ export default function Restaurant2() {
         }
 
         app.selected = selected;
-        const next = selected.nextElementSibling;
-        const prev = selected.previousElementSibling;
-        const prevSecond = prev ? prev.previousElementSibling : selected.parentElement.lastElementChild;
-        const nextSecond = next ? next.nextElementSibling : selected.parentElement.firstElementChild;
+        const next = typeof selected !== "string" ? selected.nextElementSibling : null;
+        const prev = typeof selected !== "string" ? selected.previousElementSibling : null;
+        const prevSecond = prev ? prev.previousElementSibling : (typeof selected !== "string" && selected.parentElement ? selected.parentElement.lastElementChild : null);
+        const nextSecond = next ? next.nextElementSibling : (typeof selected !== "string" && selected.parentElement ? selected.parentElement.firstElementChild : null);
 
-        selected.className = '';
-        selected.classList.add("selected");
+        if (typeof selected !== "string") {
+          selected.className = '';
+          selected.classList.add("selected");
+        }
 
         app.carousel.removeClass(prev).classList.add('prev');
         app.carousel.removeClass(next).classList.add('next');
