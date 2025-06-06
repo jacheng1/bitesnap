@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
@@ -100,23 +101,23 @@ export default function Restaurant2() {
         app.carousel.nextAll(nextSecond).forEach((item: { className: string; classList: { add: (arg0: string) => void; }; }) => { item.className = ''; item.classList.add('hideRight') });
         app.carousel.prevAll(prevSecond).forEach((item: { className: string; classList: { add: (arg0: string) => void; }; }) => { item.className = ''; item.classList.add('hideLeft') });
       },
-      nextAll: function(el) {
-        const els = [];
+      nextAll: function(el: Element | null) {
+        const els: Element[] = [];
         if (el) {
-          while (el = el.nextElementSibling) { els.push(el); }
+          while ((el = el.nextElementSibling)) { els.push(el); }
         }
 
         return els;
-      },
-      prevAll: function(el) {
-        const els = [];
+            },
+            prevAll: function(el: Element | null): Element[] {
+        const els: Element[] = [];
         if (el) {
           while (el = el.previousElementSibling) { els.push(el); }
         }
 
         return els;
-      },
-      keypress: function(e) {
+            },
+            keypress: function(e: KeyboardEvent) {
         switch (e.which) {
           case 37:
             app.carousel.move('prev');
@@ -133,16 +134,16 @@ export default function Restaurant2() {
         e.preventDefault();
 
         return false;
-      },
-      select: function(e) {
-        let tgt = e.target;
-        while (!tgt.parentElement.classList.contains('carousel')) {
-          tgt = tgt.parentElement;
+            },
+            select: function(e: MouseEvent | TouchEvent) {
+        let tgt = (e.target as HTMLElement);
+        while (!tgt.parentElement!.classList.contains('carousel')) {
+          tgt = tgt.parentElement!;
         }
 
         app.carousel.move(tgt);
-      },
-      previous: function() {
+            },
+            previous: function() {
         app.carousel.move('prev');
       },
       next: function() {
@@ -310,10 +311,12 @@ export default function Restaurant2() {
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Sandy L.</span>
-            <img
+            <Image
               src="/Profile_Picture_5.svg"
               alt="Gus G."
               className="restaurant-page-friend-img"
+              width={25}
+              height={25}
             />
           </div>
         </div>
@@ -323,10 +326,12 @@ export default function Restaurant2() {
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Mike D.</span>
-            <img
+            <Image
               src="/Profile_Picture_6.svg"
               alt="Mike D."
               className="restaurant-page-friend-img"
+              width={25}
+              height={25}
             />
           </div>
         </div>
@@ -336,10 +341,12 @@ export default function Restaurant2() {
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Gus G.</span>
-            <img
+            <Image
               src="/Profile_Picture_2.svg"
               alt="Gus G."
               className="restaurant-page-friend-img"
+              width={25}
+              height={25}
             />
           </div>
         </div>

@@ -101,23 +101,23 @@ export default function Restaurant() {
         app.carousel.nextAll(nextSecond).forEach((item: { className: string; classList: { add: (arg0: string) => void; }; }) => { item.className = ''; item.classList.add('hideRight') });
         app.carousel.prevAll(prevSecond).forEach((item: { className: string; classList: { add: (arg0: string) => void; }; }) => { item.className = ''; item.classList.add('hideLeft') });
       },
-      nextAll: function(el) {
-        const els = [];
+      nextAll: function(el: Element | null) {
+        const els: Element[] = [];
         if (el) {
-          while (el = el.nextElementSibling) { els.push(el); }
+          while ((el = el.nextElementSibling)) { els.push(el); }
         }
 
         return els;
-      },
-      prevAll: function(el) {
-        const els = [];
+            },
+            prevAll: function(el: Element | null): Element[] {
+        const els: Element[] = [];
         if (el) {
           while (el = el.previousElementSibling) { els.push(el); }
         }
 
         return els;
-      },
-      keypress: function(e) {
+            },
+            keypress: function(e: KeyboardEvent) {
         switch (e.which) {
           case 37:
             app.carousel.move('prev');
@@ -134,16 +134,16 @@ export default function Restaurant() {
         e.preventDefault();
 
         return false;
-      },
-      select: function(e) {
-        let tgt = e.target;
-        while (!tgt.parentElement.classList.contains('carousel')) {
-          tgt = tgt.parentElement;
+            },
+            select: function(e: MouseEvent | TouchEvent) {
+        let tgt = (e.target as HTMLElement);
+        while (!tgt.parentElement!.classList.contains('carousel')) {
+          tgt = tgt.parentElement!;
         }
 
         app.carousel.move(tgt);
-      },
-      previous: function() {
+            },
+            previous: function() {
         app.carousel.move('prev');
       },
       next: function() {
