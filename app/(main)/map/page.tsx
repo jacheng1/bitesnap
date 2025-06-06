@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
@@ -273,10 +274,12 @@ export default function Map() {
                       }}
                       style={{ marginRight: 8 }}
                     />
-                    <img
+                    <Image
                       src={friend.img}
                       alt={friend.name}
                       className="map-friends-dropdown-img"
+                      width={25}
+                      height={25}
                     />
                     <span className="map-friends-dropdown-name">{friend.name}</span>
                   </label>
@@ -300,7 +303,7 @@ export default function Map() {
                 }}
                 style={{ cursor: "pointer" }}
               >
-                <img src={item.img} alt={item.name} className="map-sidebar-restaurant-img" />
+                <Image src={item.img} alt={item.name} className="map-sidebar-restaurant-img" width={25} height={25} />
                 <div className="map-sidebar-restaurant-info">
                   <div className="map-sidebar-restaurant-name">
                     <Link href={item.link} style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
@@ -328,11 +331,13 @@ export default function Map() {
                     </span>
                     <span className="map-sidebar-friends-row">
                       {[...Array(Math.min(item.recommendedBy, friendProfileImgs.length))].map((_, i) => (
-                        <img
+                        <Image
                           key={i}
                           src={friendProfileImgs[i]}
                           alt="Friend"
                           className="map-sidebar-friend-img"
+                          width={25}
+                          height={25}
                         />
                       ))}
                     </span>
@@ -412,9 +417,11 @@ export default function Map() {
                 >
                   <div 
                     style={{ minWidth: 220, maxWidth: 260 }}>
-                    <img
+                    <Image
                       src={restaurant.img}
                       alt={restaurant.name}
+                      width={25}
+                      height={25}
                       style={{
                         width: "100%",
                         height: 95,

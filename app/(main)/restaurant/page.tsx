@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
@@ -228,35 +229,35 @@ export default function Restaurant() {
       
       <div id="carousel" className="carousel">
         <div id='item_1' className="hideLeft">
-          <img src="/Restaurant_Food_Photo_1.svg" />
+          <img src="/Restaurant_Food_Photo_1.svg" alt="Restaurant Food Photo 1" />
         </div>
 
         <div id='item_2' className="prevLeftSecond">
-          <img src="/Restaurant_Food_Photo_2.svg" />
+          <img src="/Restaurant_Food_Photo_2.svg" alt="Restaurant Food Photo 2" />
         </div>
 
         <div id='item_3' className="prev">
-          <img src="/Restaurant_Food_Photo_3.svg" />
+          <img src="/Restaurant_Food_Photo_3.svg" alt="Restaurant Food Photo 3" />
         </div>
 
         <div id='item_4' className="selected">
-          <img src="/Restaurant_Food_Photo_4.svg" />
+          <img src="/Restaurant_Food_Photo_4.svg" alt="Restaurant Food Photo 4" />
         </div>
 
         <div id='item_5' className="next">
-          <img src="/Restaurant_Food_Photo_5.svg" />
+          <img src="/Restaurant_Food_Photo_5.svg" alt="Restaurant Food Photo 5" />
         </div>
 
         <div id='item_6' className="nextRightSecond">
-          <img src="/Restaurant_Food_Photo_6.svg" />
+          <img src="/Restaurant_Food_Photo_6.svg" alt="Restaurant Food Photo 6" />
         </div>
 
         <div id='item_7' className="hideRight">
-          <img src="/Restaurant_Food_Photo_7.svg" />
+          <img src="/Restaurant_Food_Photo_7.svg" alt="Restaurant Food Photo 7" />
         </div>
 
         <div id='item_8' className="hideRight">
-          <img src="/Restaurant_Food_Photo_8.svg" />
+          <img src="/Restaurant_Food_Photo_8.svg" alt="Restaurant Food Photo 8" />
         </div>
       </div>
 
@@ -306,10 +307,12 @@ export default function Restaurant() {
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Sandy L.</span>
-            <img
+            <Image
               src="/Profile_Picture_5.svg"
               alt="Gus G."
               className="restaurant-page-friend-img"
+              width={25}
+              height={25}
             />
           </div>
         </div>
@@ -319,10 +322,12 @@ export default function Restaurant() {
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Bob R.</span>
-            <img
+            <Image
               src="/Profile_Picture_3.svg"
               alt="Bob R."
               className="restaurant-page-friend-img"
+              width={25}
+              height={25}
             />
           </div>
         </div>
@@ -332,10 +337,12 @@ export default function Restaurant() {
           </div>
           <div className="restaurant-page-friend-profile">
             <span className="restaurant-page-friend-name">Alice T.</span>
-            <img
+            <Image
               src="/Profile_Picture_4.svg"
               alt="Alice T."
               className="restaurant-page-friend-img"
+              width={25}
+              height={25}
             />
           </div>
         </div>
