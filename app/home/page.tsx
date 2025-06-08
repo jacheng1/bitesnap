@@ -7,32 +7,48 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { LuMapPin } from "react-icons/lu";
-import { FaSearch, FaRegBell, FaUser, FaUserFriends, FaCog, FaEnvelope, FaSignOutAlt, FaStar, FaRegStar, FaThumbsUp, FaRegThumbsUp, FaThumbsDown, FaRegThumbsDown, FaRegCopyright, FaChevronDown } from "react-icons/fa";
+import {
+  FaSearch,
+  FaRegBell,
+  FaUser,
+  FaUserFriends,
+  FaCog,
+  FaEnvelope,
+  FaSignOutAlt,
+  FaStar,
+  FaRegStar,
+  FaThumbsUp,
+  FaRegThumbsUp,
+  FaThumbsDown,
+  FaRegThumbsDown,
+  FaRegCopyright,
+  FaChevronDown,
+} from "react-icons/fa";
 import { MdChatBubbleOutline } from "react-icons/md";
 
 import "./page.css";
 
 const images = [
-  { 
-    src: "/Home_Picture_1.svg", 
-    alt: "Home Food 1", 
-    caption: "Urban Plates", 
-    location: "Irvine, CA", 
-    link: "https://urbanplates.com/" 
+  {
+    src: "/Home_Picture_1.svg",
+    alt: "Home Food 1",
+    caption: "Urban Plates",
+    location: "Irvine, CA",
+    link: "https://urbanplates.com/",
   },
-  { 
-    src: "/Home_Picture_2.svg", 
-    alt: "Home Food 2", 
-    caption: "SUP Noodle Bar", 
-    location: "Buena Park, CA", 
-    link: "https://www.supnoodlebar.com/" 
+  {
+    src: "/Home_Picture_2.svg",
+    alt: "Home Food 2",
+    caption: "SUP Noodle Bar",
+    location: "Buena Park, CA",
+    link: "https://www.supnoodlebar.com/",
   },
-  { 
-    src: "/Home_Picture_3.svg", 
-    alt: "Home Food 3", 
-    caption: "Menya Hanabi - The Original Nagoya Mazesoba", 
-    location: "Los Angeles, CA", 
-    link: "https://menyahanabiusa.com/" 
+  {
+    src: "/Home_Picture_3.svg",
+    alt: "Home Food 3",
+    caption: "Menya Hanabi - The Original Nagoya Mazesoba",
+    location: "Los Angeles, CA",
+    link: "https://menyahanabiusa.com/",
   },
 ];
 
@@ -70,13 +86,13 @@ const dropdownSuggestions = [
 ];
 
 const locationSuggestions = [
-  { 
-    id: 1, 
-    name: "Current Location" 
-  }
+  {
+    id: 1,
+    name: "Current Location",
+  },
 ];
 
-function FoodRatingWithThumbs(){
+function FoodRatingWithThumbs() {
   const [thumbUp, setThumbUp] = useState(false);
   const [thumbDown, setThumbDown] = useState(false);
 
@@ -87,13 +103,20 @@ function FoodRatingWithThumbs(){
           <FaThumbsUp
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={e => { e.stopPropagation(); e.preventDefault(); setThumbUp(false); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              setThumbUp(false);
+            }}
           />
         ) : (
           <FaRegThumbsUp
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={e => { e.stopPropagation(); setThumbUp(true); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setThumbUp(true);
+            }}
           />
         )}
         <span style={{ display: "inline-block", width: "1.2rem" }}></span>
@@ -101,21 +124,35 @@ function FoodRatingWithThumbs(){
           <FaThumbsDown
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={e => { e.stopPropagation(); setThumbDown(false); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setThumbDown(false);
+            }}
           />
         ) : (
           <FaRegThumbsDown
             className="for-you-food-thumb"
             style={{ cursor: "pointer" }}
-            onClick={e => { e.stopPropagation(); setThumbDown(true); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setThumbDown(true);
+            }}
           />
         )}
       </span>
     </>
   );
-};
+}
 
-function CardUserBox({ img, name, text }: { img: string; name: string; text: string }) {
+function CardUserBox({
+  img,
+  name,
+  text,
+}: {
+  img: string;
+  name: string;
+  text: string;
+}) {
   return (
     <div className="for-you-user-box">
       <Image
@@ -138,7 +175,9 @@ export default function Home() {
   const [animating, setAnimating] = useState(false);
   const [slideIn, setSlideIn] = useState(false);
   const [next, setNext] = useState<number | null>(null);
-  const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">(
+    "right",
+  );
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
@@ -272,7 +311,7 @@ export default function Home() {
             src={images[current].src}
             alt={images[current].alt}
             style={{ zIndex: 1 }}
-            width={100} 
+            width={100}
             height={100}
           />
           {/* Next image (only during animation) */}
@@ -290,7 +329,7 @@ export default function Home() {
               src={images[next].src}
               alt={images[next].alt}
               style={{ zIndex: 2 }}
-              width={100} 
+              width={100}
               height={100}
             />
           )}
@@ -329,7 +368,7 @@ export default function Home() {
         <div className="header-top-shade"></div>
         <div className="header-overlay">
           {/* Navbar title button */}
-          <button 
+          <button
             className="header-title-btn"
             onClick={() => router.push("/home")}
           >
@@ -345,15 +384,15 @@ export default function Home() {
                 placeholder="Things to eat, bars to visit..."
                 value={searchInput}
                 onFocus={() => setDropdownOpen(true)}
-                onChange={e => setSearchInput(e.target.value)}
+                onChange={(e) => setSearchInput(e.target.value)}
                 ref={searchRef}
                 autoComplete="off"
               />
               {dropdownOpen && (
                 <div className="header-search-dropdown" ref={dropdownRef}>
                   {dropdownSuggestions.map((item) => (
-                    <div 
-                      className="header-search-row" 
+                    <div
+                      className="header-search-row"
                       key={item.id}
                       onClick={() => {
                         setSearchInput(item.name);
@@ -370,7 +409,9 @@ export default function Home() {
                         width={10}
                       />
                       <div className="header-search-info">
-                        <span className="header-search-restaurant">{item.name}</span>
+                        <span className="header-search-restaurant">
+                          {item.name}
+                        </span>
                         <span className="header-search-restaurant-location">
                           {item.location}
                         </span>
@@ -394,35 +435,43 @@ export default function Home() {
                 placeholder="City, State"
                 value={locationInput}
                 onFocus={() => setLocationDropdownOpen(true)}
-                onChange={e => setLocationInput(e.target.value)}
+                onChange={(e) => setLocationInput(e.target.value)}
                 ref={locationRef}
                 autoComplete="off"
               />
               {locationDropdownOpen && (
-              <div className="header-search-location-dropdown" ref={locationDropdownRef}>
-                {locationSuggestions
-                  .filter(loc =>
-                    loc.name.toLowerCase().includes(locationInput.toLowerCase())
-                  )
-                  .map(loc => (
-                    <div
-                      className="header-search-row"
-                      key={loc.id}
-                      onClick={() => {
-                        setLocationInput(loc.name);
-                        setLocationDropdownOpen(false);
+                <div
+                  className="header-search-location-dropdown"
+                  ref={locationDropdownRef}
+                >
+                  {locationSuggestions
+                    .filter((loc) =>
+                      loc.name
+                        .toLowerCase()
+                        .includes(locationInput.toLowerCase()),
+                    )
+                    .map((loc) => (
+                      <div
+                        className="header-search-row"
+                        key={loc.id}
+                        onClick={() => {
+                          setLocationInput(loc.name);
+                          setLocationDropdownOpen(false);
 
-                        router.push("/map");
-                      }}
-                    >
-                      <div className="header-search-info">
-                        <span className="header-search-location">
-                          <LuMapPin style={{ marginRight: "1rem", color: "#00BAC4" }} size={20} />
-                          {loc.name}
-                        </span>
+                          router.push("/map");
+                        }}
+                      >
+                        <div className="header-search-info">
+                          <span className="header-search-location">
+                            <LuMapPin
+                              style={{ marginRight: "1rem", color: "#00BAC4" }}
+                              size={20}
+                            />
+                            {loc.name}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               )}
             </div>
@@ -433,7 +482,7 @@ export default function Home() {
             </span>
           </div>
           {/* Find a Restaurant button */}
-          <button 
+          <button
             className="header-action-btn find-restaurant-btn"
             onClick={() => router.push("/map")}
           >
@@ -441,7 +490,7 @@ export default function Home() {
           </button>
 
           {/* Create a Review button */}
-          <button 
+          <button
             className="header-action-btn write-review-btn"
             onClick={() => router.push("/review")}
           >
@@ -449,23 +498,31 @@ export default function Home() {
           </button>
 
           {/* Notifications button */}
-          <button className="header-action-btn bell-btn" aria-label="Notifications">
+          <button
+            className="header-action-btn bell-btn"
+            aria-label="Notifications"
+          >
             <FaRegBell size={25} />
           </button>
 
           {/* Profile button */}
-          <button 
+          <button
             className="profile-btn"
             ref={profileBtnRef}
             onClick={() => setProfileDropdownOpen((open) => !open)}
             aria-label="Profile"
             type="button"
           >
-            <Image src="Profile_Picture.svg" alt="Profile" height={50} width={50} />
+            <Image
+              src="Profile_Picture.svg"
+              alt="Profile"
+              height={50}
+              width={50}
+            />
           </button>
           {profileDropdownOpen && (
             <div className="profile-dropdown" ref={profileDropdownRef}>
-              <button 
+              <button
                 className="profile-dropdown-btn"
                 onClick={() => router.push("/profile")}
               >
@@ -486,7 +543,7 @@ export default function Home() {
                 Messages
               </button>
               <div className="profile-dropdown-divider" />
-              <button 
+              <button
                 className="profile-dropdown-btn"
                 onClick={() => router.push("/")}
               >
@@ -526,9 +583,9 @@ export default function Home() {
                 <FaRegStar />
                 <span className="for-you-food-rating-actions">
                   <FoodRatingWithThumbs />
-                  <MdChatBubbleOutline 
-                    className="for-you-food-comment" 
-                    onClick={e => {
+                  <MdChatBubbleOutline
+                    className="for-you-food-comment"
+                    onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
                     }}
@@ -587,8 +644,12 @@ export default function Home() {
                 style={{ objectFit: "cover", borderRadius: "16px" }}
               />
               <div className="for-you-food-caption">
-                <div className="for-you-food-restaurant">Ever After Tea Room & Eatery</div>
-                <div className="for-you-food-dish">Asian Truffle Fried Rice</div>
+                <div className="for-you-food-restaurant">
+                  Ever After Tea Room & Eatery
+                </div>
+                <div className="for-you-food-dish">
+                  Asian Truffle Fried Rice
+                </div>
                 <div className="for-you-food-rating">
                   <FaStar />
                   <FaStar />
@@ -607,7 +668,11 @@ export default function Home() {
 
         {/* Row of two food cards */}
         <div className="for-you-food-cards-row" style={{ marginTop: "0.5rem" }}>
-          <Link href="/restaurant" className="for-you-food-card for-you-food-card-mid" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            href="/restaurant"
+            className="for-you-food-card for-you-food-card-mid"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <CardUserBox
               img="/Profile_Picture_5.svg"
               name="Sandy L."
@@ -632,9 +697,9 @@ export default function Home() {
                 <FaStar />
                 <span className="for-you-food-rating-actions">
                   <FoodRatingWithThumbs />
-                  <MdChatBubbleOutline 
-                    className="for-you-food-comment" 
-                    onClick={e => {
+                  <MdChatBubbleOutline
+                    className="for-you-food-comment"
+                    onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
                     }}
@@ -644,7 +709,10 @@ export default function Home() {
             </div>
           </Link>
           <div className="for-you-food-card for-you-food-card-mid">
-            <Link href="/restaurant-2" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link
+              href="/restaurant-2"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               <CardUserBox
                 img="/Profile_Picture_6.svg"
                 name="Mike D."
@@ -669,9 +737,9 @@ export default function Home() {
                   <FaRegStar />
                   <span className="for-you-food-rating-actions">
                     <FoodRatingWithThumbs />
-                    <MdChatBubbleOutline 
-                      className="for-you-food-comment" 
-                      onClick={e => {
+                    <MdChatBubbleOutline
+                      className="for-you-food-comment"
+                      onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();
                       }}
@@ -684,7 +752,13 @@ export default function Home() {
         </div>
 
         <span className="show-more">
-          <FaChevronDown style={{ marginRight: "0.7rem", fontSize: "0.8em", verticalAlign: "middle" }} />
+          <FaChevronDown
+            style={{
+              marginRight: "0.7rem",
+              fontSize: "0.8em",
+              verticalAlign: "middle",
+            }}
+          />
           Show more posts
         </span>
       </div>
@@ -715,7 +789,13 @@ export default function Home() {
           <div className="footer-title">Languages</div>
           <div className="footer-link">
             English
-            <FaChevronDown style={{ marginLeft: "0.5rem", fontSize: "0.6em", verticalAlign: "middle" }} />
+            <FaChevronDown
+              style={{
+                marginLeft: "0.5rem",
+                fontSize: "0.6em",
+                verticalAlign: "middle",
+              }}
+            />
           </div>
         </div>
 
@@ -730,4 +810,4 @@ export default function Home() {
       </footer>
     </div>
   );
-};
+}

@@ -80,10 +80,7 @@ export default function LoginPage() {
           </div>
 
           {/* Submit button */}
-          <button 
-            type="submit" 
-            className="login"
-          >
+          <button type="submit" className="login">
             <Link href="/home" className="login-link">
               Login
             </Link>
@@ -101,19 +98,15 @@ export default function LoginPage() {
         </div>
 
         {/* Google login button */}
-        <button 
-          className="google fw-bold"
-        >
+        <button className="google fw-bold">
           <FcGoogle size={48} /> Google
         </button>
 
         {/* Facebook login button */}
-        <button 
-          className="facebook fw-bold"
-        >
+        <button className="facebook fw-bold">
           <FaFacebook size={48} color="#1877F3" /> Facebook
         </button>
       </div>
     </div>
   );
-};
+}

@@ -1,102 +1,102 @@
 .map-page-container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    min-height: 0;
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-    box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .map-sidebar {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    width: 1250px;
-    height: 100vh;
-    background: #1B2027;
-    box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.07);
-    border-right: none;
-    padding: 1.7rem 2.2rem 0 5.5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #232832 #1B2027;
-    z-index: 2;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 1250px;
+  height: 100vh;
+  background: #1b2027;
+  box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.07);
+  border-right: none;
+  padding: 1.7rem 2.2rem 0 5.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #232832 #1b2027;
+  z-index: 2;
 }
 
 /* For Webkit browsers */
 .map-sidebar::-webkit-scrollbar {
-    width: 10px;
-    background: #1B2027;
+  width: 10px;
+  background: #1b2027;
 }
 
 .map-sidebar::-webkit-scrollbar-thumb {
-    background: #232832;
-    border-radius: 8px;
+  background: #232832;
+  border-radius: 8px;
 }
 
 .map-sidebar::-webkit-scrollbar-thumb:hover {
-    background: #232832;
+  background: #232832;
 }
 
 .map-sidebar-header {
-    position: relative;
-    color: #FFFFFF;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+  position: relative;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
 }
 
 .map-sidebar-divider {
-    display: block;
-    min-height: 1.5px;
-    flex-shrink: 0;
-    width: 100%;
-    height: 1.5px;
-    background: #222831;
-    margin-bottom: 1.5rem;
-    border: none;
-    opacity: 1;
+  display: block;
+  min-height: 1.5px;
+  flex-shrink: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #222831;
+  margin-bottom: 1.5rem;
+  border: none;
+  opacity: 1;
 }
 
 .map-sidebar-capsules-row {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .map-sidebar-capsule {
-    display: flex;
-    align-items: center;
-    background: #222831;
-    color: #B0B0B0;
-    border-radius: 999px;
-    padding: 0.55rem 1.3rem 0.55rem 1.1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    gap: 0.7rem;
+  display: flex;
+  align-items: center;
+  background: #222831;
+  color: #b0b0b0;
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem 0.55rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  gap: 0.7rem;
 }
 
 .map-sidebar-capsule:hover {
-    background: #2a313c;
+  background: #2a313c;
 }
 
 .map-sidebar-capsule-icon {
-    font-size: 1em;
-    color: #B0B0B0;
-    vertical-align: middle;
+  font-size: 1em;
+  color: #b0b0b0;
+  vertical-align: middle;
 }
 
 .map-sidebar-capsule-chevron {
-    font-size: 1em;
-    margin-left: 0.4rem;
-    color: #B0B0B0;
+  font-size: 1em;
+  margin-left: 0.4rem;
+  color: #b0b0b0;
 }
 
 .map-price-dropdown {
@@ -105,7 +105,7 @@
   left: 0;
   background: #232832;
   border-radius: 8px;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
   min-width: 190px;
   z-index: 10;
   padding: 0.7rem 0.5rem;
@@ -147,7 +147,7 @@
   left: 0;
   background: #232832;
   border-radius: 8px;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
   min-width: 190px;
   z-index: 10;
   padding: 0.7rem 0.5rem;
@@ -187,188 +187,192 @@
 }
 
 .map-sidebar-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .map-sidebar-restaurant-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.1rem;
-    padding: 1.5rem 1rem;
-    transition: background 0.18s, box-shadow 0.18s, transform 0.18s, border-radius 0.18s;
-    border-radius: 8px;
-    cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.5rem 1rem;
+  transition:
+    background 0.18s,
+    box-shadow 0.18s,
+    transform 0.18s,
+    border-radius 0.18s;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .map-sidebar-restaurant-row:hover {
-    background: #232832;
-    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
-    transform: scale(1.025);
-    z-index: 1;
+  background: #232832;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
+  transform: scale(1.025);
+  z-index: 1;
 }
 
 .map-sidebar-restaurant-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 8px;
-    object-fit: cover;
-    background: #232832;
-    flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #232832;
+  flex-shrink: 0;
 }
 
 .map-sidebar-restaurant-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.5rem;
 }
 
 .map-sidebar-restaurant-name {
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .map-sidebar-restaurant-name:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .map-sidebar-restaurant-location {
-    color: #b0b0b0;
-    font-size: 0.8rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
 }
 
 .map-sidebar-location-icon {
-    margin-right: 0.3rem;
+  margin-right: 0.3rem;
 }
 
 .map-sidebar-restaurant-hours-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    color: #b0b0b0;
-    font-size: 0.8rem;
-    font-weight: 400;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 
 .map-sidebar-hours-icon {
-    margin-right: 0.4rem;
-    font-size: 1rem;
-    color: #b0b0b0;
+  margin-right: 0.4rem;
+  font-size: 1rem;
+  color: #b0b0b0;
 }
 
 .map-sidebar-hours-text {
-    color: #b0b0b0;
+  color: #b0b0b0;
 }
 
 .map-sidebar-restaurant-divider {
-    width: 100%;
-    height: 1px;
-    background: #232832;
-    margin: 0;
+  width: 100%;
+  height: 1px;
+  background: #232832;
+  margin: 0;
 }
 
 .map-sidebar-restaurant-stars-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .map-sidebar-star {
-    color: #FFFFFF;
-    font-size: 1.15rem;
+  color: #ffffff;
+  font-size: 1.15rem;
 }
 
 .map-sidebar-star.filled {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .map-sidebar-recommended-text {
-    color: #b0b0b0;
-    font-size: 0.8rem;
-    margin-left: 0.1rem;
-    font-weight: 500;
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  margin-left: 0.1rem;
+  font-weight: 500;
 }
 
 .map-sidebar-friends-row {
-    display: flex;
-    align-items: center;
-    margin-left: 0.2rem;
-    gap: -0.5rem;
+  display: flex;
+  align-items: center;
+  margin-left: 0.2rem;
+  gap: -0.5rem;
 }
 
 .map-sidebar-friend-img {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: none;
-    margin-left: -8px;
-    background: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none;
+  margin-left: -8px;
+  background: none;
 }
 
 .map-sidebar-restaurant-cost-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3rem;
 }
 
 .map-sidebar-dollar {
-    color: #b0b0b0;
-    font-size: 1rem;
+  color: #b0b0b0;
+  font-size: 1rem;
 }
 
 .map-sidebar-dollar.filled {
-    color: #00adb5;
+  color: #00adb5;
 }
 
 .map-sidebar-cost-period {
-    font-size: 0.3rem;
-    color: #b0b0b0;
-    margin: 0 0.5rem 0 0.3rem;
-    vertical-align: middle;
+  font-size: 0.3rem;
+  color: #b0b0b0;
+  margin: 0 0.5rem 0 0.3rem;
+  vertical-align: middle;
 }
 
 .map-sidebar-cost-text {
-    color: #b0b0b0;
-    font-size: 0.8rem;
-    font-weight: 400;
-    vertical-align: middle;
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  vertical-align: middle;
 }
 
 .map-sidebar-restaurant-capsules-row {
-    display: flex;
-    gap: 0.6rem;
-    margin: 2.1rem 0 0.2rem 0;
+  display: flex;
+  gap: 0.6rem;
+  margin: 2.1rem 0 0.2rem 0;
 }
 
 .map-sidebar-restaurant-capsule {
-    display: flex;
-    align-items: center;
-    background: #00adb5;
-    color: #FFFFFF;
-    border-radius: 999px;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: none;
-    outline: none;
-    user-select: none;
+  display: flex;
+  align-items: center;
+  background: #00adb5;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  user-select: none;
 }
 
 .google-map-full {
-    flex: 1 1 auto;
-    width: 100%;
-    height: 100vh;
-    min-height: 0;
-    min-width: 0;
-    border-radius: 0;
-    overflow-x: hidden;
-    box-sizing: border-box;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+  min-width: 0;
+  border-radius: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }

@@ -91,7 +91,9 @@ const friendReviewSidebar = [
 export default function Review() {
   const [restaurantInput, setRestaurantInput] = useState("");
   const [restaurantDropdownOpen, setRestaurantDropdownOpen] = useState(false);
-  const [selectedRestaurant, setSelectedRestaurant] = useState<number | null>(null);
+  const [selectedRestaurant, setSelectedRestaurant] = useState<number | null>(
+    null,
+  );
   const [selectedRating, setSelectedRating] = useState<number>(0);
   const [uploadedImgs, setUploadedImgs] = useState<string[]>([]);
   const [selectedFriends, setSelectedFriends] = useState<number[]>([]);
@@ -124,24 +126,21 @@ export default function Review() {
   function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
     const files = e.target.files;
     if (files && files.length > 0) {
-      Array.from(files).forEach(file => {
+      Array.from(files).forEach((file) => {
         const reader = new FileReader();
-        reader.onload = ev => {
-          setUploadedImgs(prev => [...prev, ev.target?.result as string]);
+        reader.onload = (ev) => {
+          setUploadedImgs((prev) => [...prev, ev.target?.result as string]);
         };
         reader.readAsDataURL(file);
       });
 
-      
       e.target.value = "";
     }
   }
 
   function handleFriendToggle(id: number) {
-    setSelectedFriends(prev =>
-      prev.includes(id)
-        ? prev.filter(fid => fid !== id)
-        : [...prev, id]
+    setSelectedFriends((prev) =>
+      prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id],
     );
   }
 
@@ -159,7 +158,7 @@ export default function Review() {
             placeholder="Burger, wine bar, dessert cafe"
             value={restaurantInput}
             onFocus={() => setRestaurantDropdownOpen(true)}
-            onChange={e => {
+            onChange={(e) => {
               setRestaurantInput(e.target.value);
               setRestaurantDropdownOpen(true);
             }}
@@ -172,10 +171,12 @@ export default function Review() {
           {restaurantDropdownOpen && (
             <div className="review-search-dropdown" ref={restaurantDropdownRef}>
               {dropdownSuggestions
-                .filter(item =>
-                  item.name.toLowerCase().includes(restaurantInput.toLowerCase())
+                .filter((item) =>
+                  item.name
+                    .toLowerCase()
+                    .includes(restaurantInput.toLowerCase()),
                 )
-                .map(item => (
+                .map((item) => (
                   <div
                     className="review-search-row"
                     key={item.id}
@@ -193,7 +194,9 @@ export default function Review() {
                       width={24}
                     />
                     <div className="review-search-info">
-                      <span className="review-search-restaurant">{item.name}</span>
+                      <span className="review-search-restaurant">
+                        {item.name}
+                      </span>
                       <span className="review-search-restaurant-location">
                         {item.location}
                       </span>
@@ -233,24 +236,24 @@ export default function Review() {
                       tabIndex={0}
                       aria-label={`Set rating to ${star}`}
                     />
-                  )
+                  ),
                 )}
-                  <div className="review-dropdown-text">
-                      {selectedRating === 0 && "Select your rating"}
-                      {selectedRating === 1 && "Not great"}
-                      {selectedRating === 2 && "Could've been better"}
-                      {selectedRating === 3 && "Average"}
-                      {selectedRating === 4 && "Great!"}
-                      {selectedRating === 5 && "Must-try!"}
-                  </div>
-                  <div className="review-guidelines-text">
-                      BiteSnap&apos;s review guidelines
-                  </div>
+                <div className="review-dropdown-text">
+                  {selectedRating === 0 && "Select your rating"}
+                  {selectedRating === 1 && "Not great"}
+                  {selectedRating === 2 && "Could've been better"}
+                  {selectedRating === 3 && "Average"}
+                  {selectedRating === 4 && "Great!"}
+                  {selectedRating === 5 && "Must-try!"}
+                </div>
+                <div className="review-guidelines-text">
+                  BiteSnap&apos;s review guidelines
+                </div>
               </div>
               <textarea
-                  className="review-dropdown-commentbox"
-                  placeholder="Write your review..."
-                  rows={4}
+                className="review-dropdown-commentbox"
+                placeholder="Write your review..."
+                rows={4}
               />
               <div className="review-add-pics-label">Add photos</div>
               <div className="review-add-pics-box">
@@ -264,7 +267,10 @@ export default function Review() {
                   <span className="review-add-pics-btn">Upload Photo</span>
                 </label>
                 {uploadedImgs.length > 0 && (
-                  <div className="review-add-pics-preview" style={{ display: "flex", gap: "1rem" }}>
+                  <div
+                    className="review-add-pics-preview"
+                    style={{ display: "flex", gap: "1rem" }}
+                  >
                     {uploadedImgs.map((img, idx) => (
                       <Image
                         key={idx}
@@ -280,7 +286,7 @@ export default function Review() {
               </div>
               <div className="review-tag-friends-label">Tag your friends</div>
               <div className="review-tag-friends-box">
-                {friendSuggestions.map(friend => (
+                {friendSuggestions.map((friend) => (
                   <label key={friend.id} className="review-tag-friend-row">
                     <input
                       type="checkbox"
@@ -296,24 +302,26 @@ export default function Review() {
                     />
                     <div className="review-tag-friend-status-col">
                       <div className="review-tag-friend-status-row">
-                      <span
+                        <span
                           className={`review-tag-friend-status-circle ${
-                          friend.online ? "online" : "offline"
+                            friend.online ? "online" : "offline"
                           }`}
-                      />
-                      <span className="review-tag-friend-status-text">
+                        />
+                        <span className="review-tag-friend-status-text">
                           {friend.online ? "Online" : "Offline"}
-                      </span>
+                        </span>
                       </div>
-                      <span className="review-tag-friend-name">{friend.name}</span>
-                  </div>
+                      <span className="review-tag-friend-name">
+                        {friend.name}
+                      </span>
+                    </div>
                   </label>
                 ))}
               </div>
-              
+
               {/* Add Post Review button here */}
               <Link href="/home">
-                  <button className="review-post-btn">Post Review</button>
+                <button className="review-post-btn">Post Review</button>
               </Link>
             </div>
           </div>
@@ -323,13 +331,19 @@ export default function Review() {
       {/* Right Sidebar */}
       {selectedRestaurant && (
         <aside className="review-friend-sidebar">
-          <div className="review-friend-sidebar-title">What your friends say</div>
+          <div className="review-friend-sidebar-title">
+            What your friends say
+          </div>
           <div className="review-friend-sidebar-list">
-            {friendReviewSidebar.map(friend => (
+            {friendReviewSidebar.map((friend) => (
               <div className="review-friend-sidebar-box" key={friend.id}>
-                <div className="review-friend-sidebar-review">{friend.review}</div>
+                <div className="review-friend-sidebar-review">
+                  {friend.review}
+                </div>
                 <div className="review-friend-sidebar-profile">
-                  <span className="review-friend-sidebar-name">{friend.name}</span>
+                  <span className="review-friend-sidebar-name">
+                    {friend.name}
+                  </span>
                   <Image
                     src={friend.img}
                     alt={friend.name}
@@ -345,4 +359,4 @@ export default function Review() {
       )}
     </div>
   );
-};
+}

@@ -44,9 +44,9 @@ export default function RegisterPage() {
         <form className="register-form" onSubmit={handleRegister}>
           {/* First Name Input */}
           <div className="input-container">
-            <input 
-              type="text" 
-              className="input-slot" 
+            <input
+              type="text"
+              className="input-slot"
               placeholder="First Name"
               required
             />
@@ -54,9 +54,9 @@ export default function RegisterPage() {
 
           {/* Last Name Input */}
           <div className="input-container">
-            <input 
-              type="text" 
-              className="input-slot" 
+            <input
+              type="text"
+              className="input-slot"
               placeholder="Last Name"
               required
             />
@@ -64,9 +64,9 @@ export default function RegisterPage() {
 
           {/* Email Input */}
           <div className="input-container">
-            <input 
-              type="email" 
-              className="input-slot" 
+            <input
+              type="email"
+              className="input-slot"
               placeholder="Email"
               required
             />
@@ -82,7 +82,7 @@ export default function RegisterPage() {
             />
             <div
               className="password-visible"
-              onClick={() => setShowPassword(!showPassword)} 
+              onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
               <span>Show password</span>
@@ -99,9 +99,13 @@ export default function RegisterPage() {
             />
             <div
               className="password-visible"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
-              {showConfirmPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
+              {showConfirmPassword ? (
+                <FaEye size={18} />
+              ) : (
+                <FaEyeSlash size={18} />
+              )}
               <span>Show password</span>
             </div>
           </div>
@@ -114,8 +118,7 @@ export default function RegisterPage() {
 
         {/* Login link */}
         <p className="log-in">
-          Already have an account?{" "}
-          <Link href="/">Log in here!</Link>
+          Already have an account? <Link href="/">Log in here!</Link>
         </p>
 
         {/* Or Register with Google */}
@@ -133,12 +136,10 @@ export default function RegisterPage() {
         </button>
 
         {/* Facebook login button */}
-        <button 
-          className="facebook fw-bold"
-        >
+        <button className="facebook fw-bold">
           <FaFacebook size={48} color="#1877F3" /> Facebook
         </button>
       </div>
     </div>
   );
-};
+}

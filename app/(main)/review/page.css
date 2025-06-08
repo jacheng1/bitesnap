@@ -17,7 +17,7 @@
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   display: block;
-  color: #00ADB5;
+  color: #00adb5;
 }
 
 .review-searchbar,
@@ -40,7 +40,7 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #00ADB5;
+  color: #00adb5;
   font-size: 1.3rem;
   cursor: pointer;
 }
@@ -108,7 +108,7 @@
 }
 
 .review-dropdown-selected-name {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1.7rem;
   text-decoration: none;
@@ -125,7 +125,7 @@
 }
 
 .review-dropdown-star {
-  color: #00ADB5;
+  color: #00adb5;
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.12s;
@@ -137,23 +137,23 @@
 }
 
 .review-dropdown-text {
-    color: #B0B0B0;
-    font-size: 0.9rem;
-    margin-top: 0.3rem;
-    margin-left: 0.4rem;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  margin-left: 0.4rem;
 }
 
 .review-guidelines-text {
-    position: absolute;
-    color: #00ADB5;
-    font-size: 0.9rem;
-    margin-top: 0.3rem;
-    margin-left: 35.5rem;
-    cursor: pointer;
+  position: absolute;
+  color: #00adb5;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  margin-left: 35.5rem;
+  cursor: pointer;
 }
 
 .review-guidelines-text:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .review-dropdown-commentbox {
@@ -172,12 +172,12 @@
 }
 
 .review-dropdown-commentbox:focus {
-  outline: 1px solid #00ADB5;
+  outline: 1px solid #00adb5;
   outline-offset: 2px;
 }
 
 .review-add-pics-label {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.3rem;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
@@ -208,7 +208,9 @@
   padding: 0.5rem 1.1rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   display: inline-block;
 }
 
@@ -227,12 +229,12 @@
 }
 
 .review-tag-friends-label {
-    color: #FFFFFF;
-    font-size: 1.3rem;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    margin-left: 0.1rem;
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  margin-left: 0.1rem;
 }
 
 .review-tag-friends-box {
@@ -309,8 +311,8 @@
 }
 
 .review-tag-friend-name {
-    color: #FFFFFF;
-    font-size: 0.9rem;
+  color: #ffffff;
+  font-size: 0.9rem;
 }
 
 .review-post-btn {
@@ -351,7 +353,7 @@
 .review-friend-sidebar-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 2.2rem;
   margin-left: 0.2rem;
   letter-spacing: 0.01em;
@@ -365,7 +367,7 @@
 }
 
 .review-friend-sidebar-box {
-  background: #1B2027;
+  background: #1b2027;
   border-radius: 14px;
   padding: 1.6rem 1.5rem 2.2rem 1.5rem;
   min-width: 220px;
@@ -375,7 +377,9 @@
   justify-content: space-between;
   position: relative;
   min-height: 110px;
-  transition: transform 0.18s cubic-bezier(0.4,0,0.2,1), box-shadow 0.18s cubic-bezier(0.4,0,0.2,1);
+  transition:
+    transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-friend-sidebar-box:hover {

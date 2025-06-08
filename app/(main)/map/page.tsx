@@ -5,11 +5,24 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  Marker,
+  InfoWindow,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 
 import { IoPeopleSharp } from "react-icons/io5";
 import { LuMapPin } from "react-icons/lu";
-import { FaChevronDown, FaFilter, FaDollarSign, FaClock, FaStar, FaRegStar, FaCircle } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaFilter,
+  FaDollarSign,
+  FaClock,
+  FaStar,
+  FaRegStar,
+  FaCircle,
+} from "react-icons/fa";
 
 import "./page.css";
 
@@ -41,9 +54,9 @@ const containerStyle = {
   height: "100vh",
 };
 
-const center = { 
-  lat: 33.6448989, 
-  lng: -117.8255179
+const center = {
+  lat: 33.6448989,
+  lng: -117.8255179,
 };
 
 const restaurantRows = [
@@ -175,14 +188,14 @@ export default function Map() {
   const filteredRestaurants =
     selectedFriends.length === 0
       ? restaurantRows
-      : restaurantRows.filter(r =>
-          r.reviewedBy.some(fid => selectedFriends.includes(fid))
+      : restaurantRows.filter((r) =>
+          r.reviewedBy.some((fid) => selectedFriends.includes(fid)),
         );
 
   // Map markerData to filtered restaurants
-  const filteredMarkerData = filteredRestaurants.map(r => {
+  const filteredMarkerData = filteredRestaurants.map((r) => {
     // Find marker by restaurant name (assuming order matches)
-    return markerData.find(m => m.name === r.name.replace(/^\d+\.\s/, ""));
+    return markerData.find((m) => m.name === r.name.replace(/^\d+\.\s/, ""));
   });
 
   // Handler to store map instance
@@ -191,9 +204,7 @@ export default function Map() {
   };
 
   if (!isLoaded) {
-    return (
-      <div>Loading...</div>
-    );
+    return <div>Loading...</div>;
   }
 
   // Helper to get marker position by restaurant index
@@ -201,7 +212,6 @@ export default function Map() {
 
   return (
     <div className="map-page-container">
-
       {/* Sidebar */}
       <div className="map-sidebar">
         {/* Results text */}
@@ -217,7 +227,7 @@ export default function Map() {
             Filters
             <FaChevronDown className="map-sidebar-capsule-chevron" />
           </div>
-          <div 
+          <div
             className="map-sidebar-capsule"
             ref={priceCapsuleRef}
             onClick={() => setShowPriceDropdown((prev) => !prev)}
@@ -227,10 +237,7 @@ export default function Map() {
             Price
             <FaChevronDown className="map-sidebar-capsule-chevron" />
             {showPriceDropdown && (
-              <div
-                className="map-price-dropdown"
-                ref={priceDropdownRef}
-              >
+              <div className="map-price-dropdown" ref={priceDropdownRef}>
                 <div className="map-price-dropdown-row">
                   <FaDollarSign className="map-price-dropdown-dollar" />
                   <span className="map-price-dropdown-label">$1-10</span>
@@ -249,7 +256,7 @@ export default function Map() {
               </div>
             )}
           </div>
-          <div 
+          <div
             className="map-sidebar-capsule"
             ref={friendsCapsuleRef}
             onClick={() => setShowFriendsDropdown((prev) => !prev)}
@@ -260,16 +267,16 @@ export default function Map() {
             <FaChevronDown className="map-sidebar-capsule-chevron" />
             {showFriendsDropdown && (
               <div className="map-friends-dropdown" ref={friendsDropdownRef}>
-                {friendList.map(friend => (
+                {friendList.map((friend) => (
                   <label className="map-friends-dropdown-row" key={friend.id}>
                     <input
                       type="checkbox"
                       checked={selectedFriends.includes(friend.id)}
                       onChange={() => {
-                        setSelectedFriends(prev =>
+                        setSelectedFriends((prev) =>
                           prev.includes(friend.id)
-                            ? prev.filter(id => id !== friend.id)
-                            : [...prev, friend.id]
+                            ? prev.filter((id) => id !== friend.id)
+                            : [...prev, friend.id],
                         );
                       }}
                       style={{ marginRight: 8 }}
@@ -281,7 +288,9 @@ export default function Map() {
                       width={25}
                       height={25}
                     />
-                    <span className="map-friends-dropdown-name">{friend.name}</span>
+                    <span className="map-friends-dropdown-name">
+                      {friend.name}
+                    </span>
                   </label>
                 ))}
               </div>
@@ -293,7 +302,7 @@ export default function Map() {
         <div className="map-sidebar-list">
           {filteredRestaurants.map((item, idx) => (
             <div key={item.id}>
-              <div 
+              <div
                 className="map-sidebar-restaurant-row"
                 onClick={() => {
                   const pos = getMarkerPosition(idx);
@@ -303,10 +312,23 @@ export default function Map() {
                 }}
                 style={{ cursor: "pointer" }}
               >
-                <Image src={item.img} alt={item.name} className="map-sidebar-restaurant-img" width={25} height={25} />
+                <Image
+                  src={item.img}
+                  alt={item.name}
+                  className="map-sidebar-restaurant-img"
+                  width={25}
+                  height={25}
+                />
                 <div className="map-sidebar-restaurant-info">
                   <div className="map-sidebar-restaurant-name">
-                    <Link href={item.link} style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                    <Link
+                      href={item.link}
+                      style={{
+                        color: "inherit",
+                        textDecoration: "none",
+                        cursor: "pointer",
+                      }}
+                    >
                       {item.name}
                     </Link>
                   </div>
@@ -315,22 +337,31 @@ export default function Map() {
                     {item.location}
                   </div>
                   <div className="map-sidebar-restaurant-hours-row">
-                  <FaClock className="map-sidebar-hours-icon" />
-                  <span className="map-sidebar-hours-text">11:00 AM - 9:00 PM</span>
-                </div>
+                    <FaClock className="map-sidebar-hours-icon" />
+                    <span className="map-sidebar-hours-text">
+                      11:00 AM - 9:00 PM
+                    </span>
+                  </div>
                   <div className="map-sidebar-restaurant-stars-row">
                     {[...Array(5)].map((_, i) =>
                       i < item.rating ? (
                         <FaStar key={i} className="map-sidebar-star filled" />
                       ) : (
                         <FaRegStar key={i} className="map-sidebar-star" />
-                      )
+                      ),
                     )}
                     <span className="map-sidebar-recommended-text">
                       Reviewed by
                     </span>
                     <span className="map-sidebar-friends-row">
-                      {[...Array(Math.min(item.recommendedBy, friendProfileImgs.length))].map((_, i) => (
+                      {[
+                        ...Array(
+                          Math.min(
+                            item.recommendedBy,
+                            friendProfileImgs.length,
+                          ),
+                        ),
+                      ].map((_, i) => (
                         <Image
                           key={i}
                           src={friendProfileImgs[i]}
@@ -345,10 +376,13 @@ export default function Map() {
                   <div className="map-sidebar-restaurant-cost-row">
                     {[...Array(3)].map((_, i) =>
                       i < item.cost ? (
-                        <FaDollarSign key={i} className="map-sidebar-dollar filled" />
+                        <FaDollarSign
+                          key={i}
+                          className="map-sidebar-dollar filled"
+                        />
                       ) : (
                         <FaDollarSign key={i} className="map-sidebar-dollar" />
-                      )
+                      ),
                     )}
                     <FaCircle className="map-sidebar-cost-period" />
                     <span className="map-sidebar-cost-text">
@@ -383,11 +417,12 @@ export default function Map() {
         onLoad={onLoad}
       >
         {filteredMarkerData.map(
-          (marker, idx) => 
-            marker && (() => {
-          const restaurant = restaurantRows[idx];
-          const markerNumber = idx + 1;
-          const svg = `
+          (marker, idx) =>
+            marker &&
+            (() => {
+              const restaurant = restaurantRows[idx];
+              const markerNumber = idx + 1;
+              const svg = `
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <filter id="shadow" x="0" y="0" width="50" height="50">
                 <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25" />
@@ -396,65 +431,93 @@ export default function Map() {
               <text x="20" y="26" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold" fill="#fff">${markerNumber}</text>
             </svg>
           `;
-          return (
-            <Marker
-              key={marker.name}
-              position={marker.position}
-              title={marker.name}
-              onMouseOver={() => setHoveredMarker(idx)}
-              onMouseOut={() => setHoveredMarker(null)}
-              icon={{
-                url: "data:image/svg+xml;utf-8," + encodeURIComponent(svg),
-                scaledSize: new window.google.maps.Size(30, 30),
-                labelOrigin: new window.google.maps.Point(20, 20)
-              }}
-            >
-              {hoveredMarker === idx && (
-                <InfoWindow
+              return (
+                <Marker
+                  key={marker.name}
                   position={marker.position}
-                  onCloseClick={() => setHoveredMarker(null)}
-                  options={{ pixelOffset: new window.google.maps.Size(0, -5) }}
+                  title={marker.name}
+                  onMouseOver={() => setHoveredMarker(idx)}
+                  onMouseOut={() => setHoveredMarker(null)}
+                  icon={{
+                    url: "data:image/svg+xml;utf-8," + encodeURIComponent(svg),
+                    scaledSize: new window.google.maps.Size(30, 30),
+                    labelOrigin: new window.google.maps.Point(20, 20),
+                  }}
                 >
-                  <div 
-                    style={{ minWidth: 220, maxWidth: 260 }}>
-                    <Image
-                      src={restaurant.img}
-                      alt={restaurant.name}
-                      width={25}
-                      height={25}
-                      style={{
-                        width: "100%",
-                        height: 95,
-                        objectFit: "cover",
-                        borderRadius: 8,
-                        marginBottom: 12,
-                        background: "#232832"
+                  {hoveredMarker === idx && (
+                    <InfoWindow
+                      position={marker.position}
+                      onCloseClick={() => setHoveredMarker(null)}
+                      options={{
+                        pixelOffset: new window.google.maps.Size(0, -5),
                       }}
-                    />
-                    <div style={{ fontWeight: 700, fontSize: "1rem", marginBottom: 2, color: "#222831" }}>
-                      {restaurant.name}
-                    </div>
-                    <div style={{ color: "#393e46", fontSize: "0.8rem", marginBottom: 12, display: "flex", alignItems: "center" }}>
-                      <LuMapPin style={{ marginRight: 4 }} />
-                      {restaurant.location}
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      {[...Array(5)].map((_, i) =>
-                        i < restaurant.rating ? (
-                          <FaStar key={i} style={{ color: "#00ADB5", fontSize: "1.1rem" }} />
-                        ) : (
-                          <FaRegStar key={i} style={{ color: "#00ADB5", fontSize: "1.1rem" }} />
-                        )
-                      )}
-                    </div>
-                  </div>
-                </InfoWindow>
-              )}
-            </Marker>
-          );
-        })()
-      )}
+                    >
+                      <div style={{ minWidth: 220, maxWidth: 260 }}>
+                        <Image
+                          src={restaurant.img}
+                          alt={restaurant.name}
+                          width={25}
+                          height={25}
+                          style={{
+                            width: "100%",
+                            height: 95,
+                            objectFit: "cover",
+                            borderRadius: 8,
+                            marginBottom: 12,
+                            background: "#232832",
+                          }}
+                        />
+                        <div
+                          style={{
+                            fontWeight: 700,
+                            fontSize: "1rem",
+                            marginBottom: 2,
+                            color: "#222831",
+                          }}
+                        >
+                          {restaurant.name}
+                        </div>
+                        <div
+                          style={{
+                            color: "#393e46",
+                            fontSize: "0.8rem",
+                            marginBottom: 12,
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          <LuMapPin style={{ marginRight: 4 }} />
+                          {restaurant.location}
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                          }}
+                        >
+                          {[...Array(5)].map((_, i) =>
+                            i < restaurant.rating ? (
+                              <FaStar
+                                key={i}
+                                style={{ color: "#00ADB5", fontSize: "1.1rem" }}
+                              />
+                            ) : (
+                              <FaRegStar
+                                key={i}
+                                style={{ color: "#00ADB5", fontSize: "1.1rem" }}
+                              />
+                            ),
+                          )}
+                        </div>
+                      </div>
+                    </InfoWindow>
+                  )}
+                </Marker>
+              );
+            })(),
+        )}
       </GoogleMap>
     </div>
   );
-};
+}
